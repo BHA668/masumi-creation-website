@@ -1,1 +1,182 @@
+/* ===========================
+   MASUMI CREATION
+   Luxury Jewellery Website
+=========================== */
 
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+
+font-family:'Poppins',sans-serif;
+
+background:#faf8f4;
+
+color:#333;
+
+}
+
+/* ===========================
+HEADER
+=========================== */
+
+header{
+
+background:#ffffff;
+
+padding:20px 8%;
+
+position:sticky;
+
+top:0;
+
+z-index:999;
+
+box-shadow:0 5px 15px rgba(0,0,0,.08);
+
+}
+
+.container{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.logo h1{
+
+font-family:'Cinzel',serif;
+
+font-size:38px;
+
+color:#7A1F2B;
+
+letter-spacing:2px;
+
+}
+
+.logo p{
+
+font-size:14px;
+
+color:#777;
+
+margin-top:5px;
+
+}
+
+nav ul{
+
+display:flex;
+
+gap:35px;
+
+list-style:none;
+
+}
+
+nav a{
+
+text-decoration:none;
+
+font-weight:600;
+
+color:#333;
+
+transition:.3s;
+
+}
+
+nav a:hover{
+
+color:#D4AF37;
+
+}
+
+/* ===========================
+HERO
+=========================== */
+
+.hero{
+
+height:90vh;
+
+background:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.45));
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+text-align:center;
+
+color:white;
+
+padding:20px;
+
+}
+
+.hero-content{
+
+max-width:750px;
+
+}
+
+.hero h2{
+
+font-size:65px;
+
+font-family:'Cinzel',serif;
+
+margin-bottom:20px;
+
+}
+
+.hero p{
+
+font-size:22px;
+
+line-height:1.8;
+
+margin-bottom:35px;
+
+}
+
+.btn{
+
+display:inline-block;
+
+padding:15px 45px;
+
+background:#D4AF37;
+
+color:white;
+
+text-decoration:none;
+
+border-radius:50px;
+
+font-weight:600;
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+background:#7A1F2B;
+
+transform:translateY(-3px);
+
+}
