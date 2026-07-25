@@ -162,3 +162,51 @@ color:#7A1F2B;
 padding:15px 20px 30px;
 color:#666;
 }
+/* ===========================
+   SHOP BY CATEGORY
+=========================== */
+
+.categories{
+    padding:80px 8%;
+    background:#fff;
+}
+
+.categories h2{
+    text-align:center;
+    font-family:'Cinzel',serif;
+    font-size:40px;
+    color:#7A1F2B;
+    margin-bottom:50px;
+}
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+}
+
+.category-box{
+    background:#faf8f4;
+    border-radius:15px;
+    overflow:hidden;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,.08);
+    transition:0.3s;
+}
+
+.category-box:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 30px rgba(0,0,0,.15);
+}
+
+.category-box img{
+    width:100%;
+    height:280px;
+    object-fit:cover;
+}
+
+.category-box h3{
+    padding:20px;
+    font-size:22px;
+    color:#7A1F2B;
+}
