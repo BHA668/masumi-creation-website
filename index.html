@@ -88,8 +88,14 @@ Premium Artificial Jewellery • Watches • Hair Accessories • Designer Blous
 
 <h2>Featured Collections</h2>
 
+<input
+type="text"
+id="searchBar"
+placeholder="🔍 Search products..."
+onkeyup="searchProducts()">
+
 <div class="products">
-    <div class="card">
+    <div class="card product-card">
 
 <img src="image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg" alt="Jewellery">
 
@@ -99,7 +105,7 @@ Premium Artificial Jewellery • Watches • Hair Accessories • Designer Blous
 
 </div>
 
-<div class="card">
+<div class="card product-card">
 
 <img src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg" alt="Hair Clip">
 
@@ -109,7 +115,7 @@ Premium Artificial Jewellery • Watches • Hair Accessories • Designer Blous
 
 </div>
 
-<div class="card">
+<div class="card product-card">
 <img src="image/WhatsApp Image 2026-07-21 at 10.17.22 AM (1).jpeg">
 
 <h3>Hair Claw Collection</h3>
@@ -118,7 +124,7 @@ Premium Artificial Jewellery • Watches • Hair Accessories • Designer Blous
 
 </div>
 
-<div class="card">
+<div class="card product-card">
 
 <img src="image/WhatsApp Image 2026-07-21 at 10.17.24 AM (1).jpeg">
 
@@ -128,7 +134,7 @@ Premium Artificial Jewellery • Watches • Hair Accessories • Designer Blous
 
 </div>
 
-<div class="card">
+<div class="card product-card">
 
 <img src="image/WhatsApp Image 2026-07-21 at 10.17.25 AM (2).jpeg" alt="Watch">
 
@@ -137,7 +143,7 @@ Premium Artificial Jewellery • Watches • Hair Accessories • Designer Blous
 <p>Elegant watches that complete your everyday look.</p>
 
 </div>
-<div class="card">
+<div class="card product-card">
 
 <img src="image/WhatsApp Image 2026-07-21 at 10.17.27 AM (2).jpeg" alt="Blouse">
 
@@ -560,8 +566,26 @@ target="_blank">
 <script>
 
 function changeImage(image){
+    document.getElementById("mainImage").src = image;
+}
 
-document.getElementById("mainImage").src = image;
+function searchProducts(){
+
+    let input = document.getElementById("searchBar").value.toLowerCase();
+
+    let cards = document.querySelectorAll(".product-card");
+
+    cards.forEach(function(card){
+
+        let text = card.innerText.toLowerCase();
+
+        if(text.includes(input)){
+            card.style.display = "block";
+        }else{
+            card.style.display = "none";
+        }
+
+    });
 
 }
 

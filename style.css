@@ -375,3 +375,31 @@ transition:.3s;
 transform:scale(1.08);
 border-color:#7A1F2B;
 }
+#searchBar{
+width:60%;
+max-width:500px;
+display:block;
+margin:25px auto 40px;
+padding:15px;
+font-size:18px;
+border:2px solid #7A1F2B;
+border-radius:10px;
+outline:none;
+}
+#searchBar{
+width:60%;
+max-width:500px;
+display:block;
+margin:30px auto;
+padding:15px;
+
+font-size:18px;
+
+border:2px solid #7A1F2B;
+border-radius:10px;
+
+background:white;
+color:black;
+
+outline:none;
+}
