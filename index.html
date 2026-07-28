@@ -433,7 +433,22 @@ Premium Artificial Jewellery • Watches • Hair Accessories • Designer Blous
 
 <div class="product-image">
 
-<img src="image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg" alt="Designer Necklace">
+<img id="mainImage"
+src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
+alt="Designer Necklace">
+
+<div class="gallery">
+
+<img src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
+onclick="changeImage(this.src)">
+
+<img src="./image/WhatsApp Image 2026-07-21 at 10.17.26 AM (1).jpeg"
+onclick="changeImage(this.src)">
+
+<img src="./image/WhatsApp Image 2026-07-21 at 10.17.28 AM.jpeg"
+onclick="changeImage(this.src)">
+
+</div>
 
 </div>
 
@@ -481,8 +496,14 @@ Comfortable to wear and made with high-quality materials.
 
 <h2>Price: Contact Us</h2>
 
-<a href="https://wa.me/91XXXXXXXXXX" class="btn">
+<a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Masumi%20Creation,%20I%20am%20interested%20in%20the%20Crystal%20Hair%20Clips.%20Can%20you%20please%20tell%20me%20the%20price?" class="btn">
+
 🟢 Order on WhatsApp
+
+</a>
+
+<a href="#collections" class="btn">
+⬅ Back to Collections
 </a>
 
 </div>
@@ -536,6 +557,14 @@ target="_blank">
 💬
 
 </a>
+<script>
 
+function changeImage(image){
+
+document.getElementById("mainImage").src = image;
+
+}
+
+</script>
 </body>
 </html>

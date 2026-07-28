@@ -353,3 +353,25 @@ color:#555;
 display:inline-block;
 margin-top:20px;
 }
+.gallery{
+display:flex;
+gap:12px;
+margin-top:20px;
+justify-content:center;
+flex-wrap:wrap;
+}
+
+.gallery img{
+width:90px;
+height:90px;
+object-fit:cover;
+border-radius:10px;
+cursor:pointer;
+border:2px solid #ddd;
+transition:.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.08);
+border-color:#7A1F2B;
+}
