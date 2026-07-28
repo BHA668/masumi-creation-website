@@ -136,11 +136,15 @@ onkeyup="searchProducts()">
 
 <div class="card product-card">
 
+<a href="#product3">
+
 <img src="image/WhatsApp Image 2026-07-21 at 10.17.25 AM (2).jpeg" alt="Watch">
 
 <h3>Ladies Watches</h3>
 
 <p>Elegant watches that complete your everyday look.</p>
+
+</a>
 
 </div>
 <div class="card product-card">
@@ -517,6 +521,47 @@ Comfortable to wear and made with high-quality materials.
 </div>
 
 </section>
+<section id="product3" class="product-details">
+
+<h2>Ladies Watches</h2>
+
+<div class="product-box">
+
+<div class="product-image">
+
+<img src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (2).jpeg" alt="Ladies Watch">
+
+</div>
+
+<div class="product-info">
+
+<h3>Premium Ladies Watch</h3>
+
+<p>
+Elegant ladies watch with a stylish design.
+Perfect for daily wear, office wear, parties, and gifting.
+Made with premium quality for a fashionable look.
+</p>
+
+<h2>Price: Contact Us</h2>
+
+<a href="https://wa.me/917874216100?text=Hi%20Masumi%20Creation,%20I%20am%20interested%20in%20the%20Ladies%20Watch." class="btn">
+
+🟢 Order on WhatsApp
+
+</a>
+
+<a href="#collections" class="btn">
+
+⬅ Back to Collections
+
+</a>
+
+</div>
+
+</div>
+
+</section>
 
 <section id="about" class="about">
 
@@ -571,31 +616,21 @@ function changeImage(image){
 
 function searchProducts(){
 
-let input = document.getElementById("searchBar").value.toLowerCase();
+    let input = document.getElementById("searchBar").value.toLowerCase();
 
-if(input=="necklace"){
-location.href="#necklaces";
-}
+    let cards = document.querySelectorAll(".product-card");
 
-else if(input=="earring"){
-location.href="#earrings";
-}
+    cards.forEach(function(card){
 
-else if(input=="hair"){
-location.href="#hair";
-}
+        let text = card.innerText.toLowerCase();
 
-else if(input=="watch"){
-location.href="#watches";
-}
+        if(text.includes(input)){
+            card.style.display = "block";
+        }else{
+            card.style.display = "none";
+        }
 
-else if(input=="blouse"){
-location.href="#blouses";
-}
-
-else if(input=="anklet"){
-location.href="#anklets";
-}
+    });
 
 }
 
