@@ -445,8 +445,8 @@ onkeyup="searchProducts()">
 
 <img id="mainImage"
 src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
-alt="Designer Necklace">
-
+alt="Designer Necklace"
+onclick="openImage(this.src)">
 <div class="gallery">
 
 <img src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
@@ -608,6 +608,13 @@ target="_blank">
 💬
 
 </a>
+<div id="imageModal" class="image-modal">
+
+<span class="close" onclick="closeImage()">&times;</span>
+
+<img id="zoomedImage">
+
+</div>
 <script>
 
 function changeImage(image){
@@ -633,7 +640,19 @@ function searchProducts(){
     });
 
 }
+function openImage(image){
 
+document.getElementById("imageModal").style.display="flex";
+
+document.getElementById("zoomedImage").src=image;
+
+}
+
+function closeImage(){
+
+document.getElementById("imageModal").style.display="none";
+
+}
 </script>
 </body>
 </html>
