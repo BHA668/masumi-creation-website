@@ -571,21 +571,33 @@ function changeImage(image){
 
 function searchProducts(){
 
-    let input = document.getElementById("searchBar").value.toLowerCase();
+let input = document.getElementById("searchBar").value.toLowerCase();
 
-    let cards = document.querySelectorAll(".product-card");
+if(input=="necklace"){
+location.href="#necklaces";
+}
 
-    cards.forEach(function(card){
+else if(input=="earring"){
+location.href="#earrings";
+}
 
-        let text = card.innerText.toLowerCase();
+else if(input=="hair"){
+location.href="#hair";
+}
 
-        if(text.includes(input)){
-            card.style.display = "block";
-        }else{
-            card.style.display = "none";
-        }
+else if(input=="watch"){
+location.href="#watches";
+}
 
-    });
+else if(input=="blouse"){
+location.href="#blouses";
+}
+
+else if(input=="anklet"){
+location.href="#anklets";
+}
+
+}
 
 }
 
