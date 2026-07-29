@@ -487,7 +487,7 @@ festivals, parties and special occasions.
 🟢 Order on WhatsApp
 </a>
 
-<button class="btn" onclick="addToCart()">
+<button class="btn" onclick="addToCart('Designer Necklace Set')">
 
 🛒 Add to Cart
 
@@ -777,15 +777,25 @@ function closeImage(){
 document.getElementById("imageModal").style.display="none";
 
 }
-let cart = 0;
+let cart = [];
 
-function addToCart(){
+function addToCart(productName){
 
-cart++;
+cart.push(productName);
 
-document.getElementById("cart-count").innerText = cart;
+document.getElementById("cart-count").innerText = cart.length;
 
-alert("✅ Product added to cart!");
+let items = "";
+
+cart.forEach(function(product){
+
+items += "<p>🛍️ " + product + "</p>";
+
+});
+
+document.getElementById("cartItems").innerHTML = items;
+
+alert("✅ Added to Cart!");
 
 }
 function openCart() {
