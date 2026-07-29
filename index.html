@@ -725,6 +725,10 @@ target="_blank">
 
 </div>
 
+<button class="btn" onclick="checkoutWhatsApp()">
+✅ Checkout on WhatsApp
+</button>
+
 <button class="btn" onclick="closeCart()">
 
 Close
@@ -807,6 +811,29 @@ document.getElementById("cartPopup").style.display = "block";
 function closeCart() {
 
 document.getElementById("cartPopup").style.display = "none";
+
+}
+function checkoutWhatsApp(){
+
+if(cart.length==0){
+
+alert("Your cart is empty!");
+
+return;
+
+}
+
+let message="Hello Masumi Creation,%0A%0AI would like to order:%0A%0A";
+
+cart.forEach(function(product){
+
+message+="🛍️ "+product+"%0A";
+
+});
+
+message+="%0APlease tell me the total price.%0AThank you.";
+
+window.open("https://wa.me/917874216100?text="+message,"_blank");
 
 }
 </script>
