@@ -591,3 +591,29 @@ background:#e63946;
 .new{
 background:#2a9d8f;
 }
+/* ===========================
+   SHOPPING CART
+=========================== */
+
+.cart-icon{
+background:#7A1F2B;
+color:white !important;
+padding:10px 18px;
+border-radius:30px;
+font-weight:600;
+transition:.3s;
+}
+
+.cart-icon:hover{
+background:#D4AF37;
+color:white !important;
+}
+
+#cart-count{
+background:white;
+color:#7A1F2B;
+padding:2px 8px;
+border-radius:50%;
+margin-left:6px;
+font-weight:bold;
+}
