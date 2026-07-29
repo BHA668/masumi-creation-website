@@ -563,3 +563,31 @@ cursor:pointer;
 .insta-gallery img:hover{
 transform:scale(1.05);
 }
+/* ===========================
+   PRODUCT BADGES
+=========================== */
+
+.card{
+position:relative;
+}
+
+.badge{
+position:absolute;
+top:15px;
+left:15px;
+padding:8px 14px;
+border-radius:20px;
+font-size:13px;
+font-weight:bold;
+color:white;
+z-index:10;
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+.bestseller{
+background:#e63946;
+}
+
+.new{
+background:#2a9d8f;
+}
