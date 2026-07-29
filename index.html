@@ -487,6 +487,12 @@ festivals, parties and special occasions.
 🟢 Order on WhatsApp
 </a>
 
+<button class="btn" onclick="addToCart()">
+
+🛒 Add to Cart
+
+</button>
+
 </div>
 
 </div>
@@ -752,6 +758,17 @@ document.getElementById("zoomedImage").src=image;
 function closeImage(){
 
 document.getElementById("imageModal").style.display="none";
+
+}
+let cart = 0;
+
+function addToCart(){
+
+cart++;
+
+document.getElementById("cart-count").innerText = cart;
+
+alert("✅ Product added to cart!");
 
 }
 </script>
