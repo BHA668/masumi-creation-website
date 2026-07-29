@@ -482,12 +482,20 @@ festivals, parties and special occasions.
 </p>
 
 <h2>Price: Contact Us</h2>
+<div class="quantity-box">
 
+<button onclick="changeQty(-1)">−</button>
+
+<span id="qty">1</span>
+
+<button onclick="changeQty(1)">+</button>
+
+</div>
 <a href="https://wa.me/91XXXXXXXXXX" class="btn">
 🟢 Order on WhatsApp
 </a>
 
-<button class="btn" onclick="addToCart('Designer Necklace Set')">
+<button class="btn" onclick="addToCart('Designer Necklace Set', quantity)">
 
 🛒 Add to Cart
 
@@ -811,6 +819,19 @@ document.getElementById("cartPopup").style.display = "block";
 function closeCart() {
 
 document.getElementById("cartPopup").style.display = "none";
+
+}
+let quantity = 1;
+
+function changeQty(change){
+
+    quantity += change;
+
+    if(quantity < 1){
+        quantity = 1;
+    }
+
+    document.getElementById("qty").innerText = quantity;
 
 }
 function checkoutWhatsApp(){
