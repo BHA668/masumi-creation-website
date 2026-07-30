@@ -34,7 +34,9 @@
 🛒 Cart <span id="cart-count">0</span>
 
 </a>
-
+<a href="javascript:void(0)" class="cart-icon" onclick="openWishlist()">
+❤️ Wishlist <span id="wishlist-count">0</span>
+</a>
 </nav>
 
 </header>
@@ -769,6 +771,21 @@ Close
 </button>
 
 </div>
+<div id="wishlistPopup" class="cart-popup">
+
+<h2>❤️ Wishlist</h2>
+
+<div id="wishlistItems">
+
+<p>Your wishlist is empty.</p>
+
+</div>
+
+<button class="btn" onclick="closeWishlist()">
+Close
+</button>
+
+</div>
 <div id="imageModal" class="image-modal">
 
 <span class="close" onclick="closeImage()">&times;</span>
@@ -815,6 +832,7 @@ document.getElementById("imageModal").style.display="none";
 
 }
 let cart = [];
+let wishlist = [];
 
 function addToCart(productName, quantity){
 
@@ -870,7 +888,6 @@ if(cart.length === 0){
     alert("Your cart is empty!");
     return;
 }
-
 let message = "🛍️ *Masumi Creation Order*%0A%0A";
 
 let total = 0;
@@ -906,6 +923,45 @@ document.getElementById("cartItems").innerHTML =
 closeCart();
 
 }
+function addToWishlist(productName){
+
+if(!wishlist.includes(productName)){
+
+wishlist.push(productName);
+
+document.getElementById("wishlist-count").innerText = wishlist.length;
+
+let items = "";
+
+wishlist.forEach(function(product){
+
+items += "<p>❤️ " + product + "</p>";
+
+});
+
+document.getElementById("wishlistItems").innerHTML = items;
+
+alert("❤️ " + productName + " added to Wishlist!");
+
+}else{
+
+alert("⚠️ Product is already in your Wishlist!");
+
+}
+
+}
+function openWishlist(){
+
+document.getElementById("wishlistPopup").style.display = "block";
+
+}
+
+function closeWishlist(){
+
+document.getElementById("wishlistPopup").style.display = "none";
+
+}
+
 </script>
 </body>
 </html>
