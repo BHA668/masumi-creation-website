@@ -501,6 +501,10 @@ festivals, parties and special occasions.
 
 </button>
 
+<button class="btn" onclick="addToWishlist('Designer Necklace Set')">
+❤️ Wishlist
+</button>
+
 </div>
 
 </div>
@@ -529,13 +533,38 @@ Comfortable to wear and made with high-quality materials.
 </p>
 
 <h2>Price: Contact Us</h2>
+<div class="quantity-box">
+
+<label>Quantity:</label>
+
+<input
+type="number"
+id="qty2"
+value="1"
+min="1"
+max="10">
+
+</div>
 
 <a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Masumi%20Creation,%20I%20am%20interested%20in%20the%20Crystal%20Hair%20Clips.%20Can%20you%20please%20tell%20me%20the%20price?" class="btn">
 
 🟢 Order on WhatsApp
 
 </a>
+<button
+class="btn"
+onclick="addToCart('Crystal Hair Clips', document.getElementById('qty2').value)">
 
+🛒 Add to Cart
+
+</button>
+<button
+class="btn"
+onclick="addToWishlist('Crystal Hair Clips')">
+
+❤️ Wishlist
+
+</button>
 <a href="#collections" class="btn">
 ⬅ Back to Collections
 </a>
@@ -791,9 +820,14 @@ document.getElementById("imageModal").style.display="none";
 }
 let cart = [];
 
-function addToCart(productName){
+function addToCart(productName, quantity){
 
-cart.push(productName);
+quantity = parseInt(quantity);
+
+cart.push({
+name: productName,
+qty: quantity
+});
 
 document.getElementById("cart-count").innerText = cart.length;
 
@@ -801,7 +835,7 @@ let items = "";
 
 cart.forEach(function(product){
 
-items += "<p>🛍️ " + product + "</p>";
+items += "<p>🛍️ " + product.name + " × " + product.qty + "</p>";
 
 });
 
