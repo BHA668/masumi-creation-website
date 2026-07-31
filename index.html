@@ -331,10 +331,16 @@ onkeyup="searchProducts()">
 </div>
 
 <div class="card">
+
+<a href="#product5">
+
 <img src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM.jpeg" alt="Designer Earrings">
+
 <h3>Designer Earrings</h3>
+
 <p>Elegant earrings with premium finishing.</p>
-</div>
+
+</a>
 
 </div>
 
@@ -689,7 +695,69 @@ class="btn">
 </div>
 
 </section>
+<section id="product5" class="product-details">
 
+<h2>Designer Earrings</h2>
+
+<div class="product-box">
+
+<div class="product-image">
+
+<img
+id="designerEarringImage"
+src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM.jpeg"
+alt="Designer Earrings"
+onclick="openImage(this.src)">
+
+</div>
+
+<div class="product-info">
+
+<h3>Premium Designer Earrings</h3>
+
+<p>
+Elegant designer earrings with premium finishing.
+Perfect for weddings, parties, festivals and everyday elegance.
+</p>
+
+<h2>Price: Contact Us</h2>
+
+<div class="quantity-box">
+
+<button onclick="changeQty(-1)">−</button>
+
+<span id="qty">1</span>
+
+<button onclick="changeQty(1)">+</button>
+
+</div>
+
+<br>
+
+<button class="btn"
+onclick="addToCart('Designer Earrings', quantity)">
+🛒 Add to Cart
+</button>
+
+<br><br>
+
+<button class="btn"
+onclick="addToWishlist('Designer Earrings')">
+❤️ Wishlist
+</button>
+
+<br><br>
+
+<a href="https://wa.me/917874216100"
+class="btn">
+🟢 Order on WhatsApp
+</a>
+
+</div>
+
+</div>
+
+</section>
 <section id="about" class="about">
 
 <h2>About Masumi Creation</h2>
