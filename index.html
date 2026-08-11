@@ -103,15 +103,39 @@ placeholder="🔍 Search products..."
 onkeyup="searchProducts()">
 
 <div class="products">
-    <div class="card product-card">
+  <div class="card product-card">
 
-<span class="badge bestseller">🔥 BEST SELLER</span>
+    <span class="badge bestseller">🔥 BEST SELLER</span>
 
-<img src="image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg" alt="Jewellery">
+    <a href="designer-necklace.html">
 
-<h3>Designer Necklace Set</h3>
+        <img
+            src="image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
+            alt="Designer Necklace Set">
 
-<p>Elegant handcrafted jewellery for every celebration.</p>
+        <h3>Designer Necklace Set</h3>
+
+        <p>
+            Elegant handcrafted jewellery for every celebration.
+        </p>
+
+    </a>
+
+    <div class="product-card-info">
+
+        <div class="rating">
+            ⭐⭐⭐⭐⭐
+        </div>
+
+        <p class="price">
+            💎 Price: Contact Us
+        </p>
+
+        <a href="designer-necklace.html" class="card-btn">
+            View Product
+        </a>
+
+    </div>
 
 </div>
 
@@ -464,130 +488,161 @@ onkeyup="searchProducts()">
 
 <section id="product2" class="product-details">
 
-<h2>Crystal Hair Clips</h2>
+    <h2>Designer Necklace Set</h2>
 
-<h2>Designer Necklace Set</h2>
+    <div class="product-box">
 
-<div class="product-box">
+        <div class="product-image">
 
-<div class="product-image">
+            <img
+                id="mainImage"
+                src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
+                alt="Designer Necklace"
+                onclick="openImage(this.src)"
+            >
 
-<img id="mainImage"
-src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
-alt="Designer Necklace"
-onclick="openImage(this.src)">
-<div class="gallery">
+            <div class="gallery">
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
-onclick="changeImage(this.src)">
+                <img
+                    src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
+                    onclick="changeImage(this.src)"
+                    alt="Designer Necklace"
+                >
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.26 AM (1).jpeg"
-onclick="changeImage(this.src)">
+                <img
+                    src="./image/WhatsApp Image 2026-07-21 at 10.17.26 AM (1).jpeg"
+                    onclick="changeImage(this.src)"
+                    alt="Traditional Necklace"
+                >
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.28 AM.jpeg"
-onclick="changeImage(this.src)">
+                <img
+                    src="./image/WhatsApp Image 2026-07-21 at 10.17.28 AM.jpeg"
+                    onclick="changeImage(this.src)"
+                    alt="Luxury Necklace"
+                >
 
-</div>
+            </div>
 
-</div>
+        </div>
 
-<div class="product-info">
+        <div class="product-info">
 
-<h3>Premium Artificial Necklace</h3>
+            <h3>Premium Artificial Necklace</h3>
 
-<p>
-Beautiful premium-quality artificial necklace perfect for weddings,
-festivals, parties and special occasions.
-</p>
+            <p>
+                Beautiful premium-quality artificial necklace perfect for
+                weddings, festivals, parties and special occasions.
+            </p>
 
-<h2>Price: Contact Us</h2>
-<div class="quantity-box">
+            <h2>Price: Contact Us</h2>
 
-<button onclick="changeQty(-1)">−</button>
+            <div class="quantity-box">
 
-<span id="qty">1</span>
+                <button onclick="changeQty(-1)">−</button>
 
-<button onclick="changeQty(1)">+</button>
+                <span id="qty">1</span>
 
-</div>
-<a href="https://wa.me/91XXXXXXXXXX" class="btn">
-🟢 Order on WhatsApp
-</a>
+                <button onclick="changeQty(1)">+</button>
 
-<button class="btn" onclick="addToCart('Designer Necklace Set', quantity)">
+            </div>
 
-🛒 Add to Cart
+            <a
+                href="https://wa.me/917874216100"
+                class="btn"
+            >
+                🟢 Order on WhatsApp
+            </a>
 
-</button>
+            <button
+                class="btn"
+                onclick="addToCart('Designer Necklace Set', quantity)"
+            >
+                🛒 Add to Cart
+            </button>
 
-<button class="btn" onclick="addToWishlist('Designer Necklace Set')">
-❤️ Wishlist
-</button>
+            <button
+                class="btn"
+                onclick="addToWishlist('Designer Necklace Set')"
+            >
+                ❤️ Wishlist
+            </button>
 
-</div>
+        </div>
 
-</div>
+    </div>
 
-</sectiol Hair Clips</h2>
+</section>
 
-<div class="product-box">
 
-<div class="product-image">
+<section id="product2-hair" class="product-details">
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg" alt="Crystal Hair Clip">
+    <h2>Crystal Hair Clips</h2>
 
-</div>
+    <div class="product-box">
 
-<div class="product-info">
+        <div class="product-image">
 
-<h3>Premium Crystal Hair Clip</h3>
+            <img
+                src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg"
+                alt="Crystal Hair Clip"
+            >
 
-<p>
-Elegant crystal hair clips with a premium finish.
-Perfect for parties, weddings and everyday styling.
-Comfortable to wear and made with high-quality materials.
-</p>
+        </div>
 
-<h2>Price: Contact Us</h2>
-<div class="quantity-box">
+        <div class="product-info">
 
-<label>Quantity:</label>
+            <h3>Premium Crystal Hair Clip</h3>
 
-<input
-type="number"
-id="qty2"
-value="1"
-min="1"
-max="10">
+            <p>
+                Elegant crystal hair clips with a premium finish.
+                Perfect for parties, weddings and everyday styling.
+                Comfortable to wear and made with high-quality materials.
+            </p>
 
-</div>
+            <h2>Price: Contact Us</h2>
 
-<a href="https://wa.me/91XXXXXXXXXX?text=Hi%20Masumi%20Creation,%20I%20am%20interested%20in%20the%20Crystal%20Hair%20Clips.%20Can%20you%20please%20tell%20me%20the%20price?" class="btn">
+            <div class="quantity-box">
 
-🟢 Order on WhatsApp
+                <label>Quantity:</label>
 
-</a>
-<button
-class="btn"
-onclick="addToCart('Crystal Hair Clips', document.getElementById('qty2').value)">
+                <input
+                    type="number"
+                    id="qty2"
+                    value="1"
+                    min="1"
+                    max="10"
+                >
 
-🛒 Add to Cart
+            </div>
 
-</button>
-<button
-class="btn"
-onclick="addToWishlist('Crystal Hair Clips')">
+            <a
+                href="https://wa.me/917874216100?text=Hi%20Masumi%20Creation,%20I%20am%20interested%20in%20the%20Crystal%20Hair%20Clips.%20Can%20you%20please%20tell%20me%20the%20price?"
+                class="btn"
+            >
+                🟢 Order on WhatsApp
+            </a>
 
-❤️ Wishlist
+            <button
+                class="btn"
+                onclick="addToCart('Crystal Hair Clips', document.getElementById('qty2').value)"
+            >
+                🛒 Add to Cart
+            </button>
 
-</button>
-<a href="#collections" class="btn">
-⬅ Back to Collections
-</a>
+            <button
+                class="btn"
+                onclick="addToWishlist('Crystal Hair Clips')"
+            >
+                ❤️ Wishlist
+            </button>
 
-</div>
+            <a href="#collections" class="btn">
+                ⬅ Back to Collections
+            </a>
 
-</div>
+        </div>
+
+    </div>
 
 </section>
 <section id="product3" class="product-details">
