@@ -852,3 +852,39 @@ right:20px;
     }
 
 }
+/* ===========================
+   FEATURED PRODUCT CARD INFO
+=========================== */
+
+.product-card-info{
+    padding:0 20px 25px;
+    text-align:center;
+}
+
+.product-card-info .rating{
+    font-size:16px;
+    margin:5px 0 10px;
+    letter-spacing:2px;
+}
+
+.product-card-info .price{
+    color:#7A1F2B;
+    font-weight:600;
+    margin:8px 0 15px;
+}
+
+.product-card-info .card-btn{
+    display:inline-block;
+    padding:10px 22px;
+    background:#7A1F2B;
+    color:white;
+    text-decoration:none;
+    border-radius:25px;
+    font-weight:600;
+    transition:.3s;
+}
+
+.product-card-info .card-btn:hover{
+    background:#D4AF37;
+    transform:translateY(-2px);
+}
