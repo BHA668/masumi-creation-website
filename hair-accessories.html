@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Masumi Creation | Hair Accessories</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+
+    <div class="logo">
+        <img src="./image/mc 1.jpeg" alt="Masumi Creation Logo">
+    </div>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="index.html#collections">Collections</a>
+        <a href="index.html#about">About</a>
+        <a href="index.html#contact">Contact</a>
+    </nav>
+
+</header>
+
+
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <h1>Premium Hair Accessories</h1>
+
+        <p>
+            Discover our stylish collection of hair clips,
+            hair claws and beautiful accessories for every occasion.
+        </p>
+
+        <a href="#collections" class="btn">
+            Explore Hair Accessories
+        </a>
+
+    </div>
+
+    <div class="hero-image">
+
+        <img
+            src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg"
+            alt="Hair Accessories">
+
+    </div>
+
+</section>
+
+
+<section class="highlight">
+
+    <h2>✨ Style That Completes Your Look ✨</h2>
+
+    <p>
+        Premium Quality • Stylish Designs • Affordable Prices
+    </p>
+
+    <div class="highlight-items">
+
+        <div>
+            <h3>💎 Premium Quality</h3>
+        </div>
+
+        <div>
+            <h3>💖 Latest Designs</h3>
+        </div>
+
+        <div>
+            <h3>🚚 Affordable Prices</h3>
+        </div>
+
+    </div>
+
+</section>
+
+
+<section id="collections" class="collections">
+
+    <h2>💇 Hair Accessories Collection</h2>
+
+    <div class="products">
+
+
+        <div class="card">
+
+            <img
+                src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg"
+                alt="Crystal Hair Clips">
+
+            <h3>Crystal Hair Clips</h3>
+
+            <p>
+                Premium quality stylish hair clips
+                for parties and special occasions.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <img
+                src="./image/WhatsApp Image 2026-07-21 at 10.17.22 AM (1).jpeg"
+                alt="Hair Claw">
+
+            <h3>Hair Claw</h3>
+
+            <p>
+                Strong grip and stylish design
+                for comfortable everyday use.
+            </p>
+
+        </div>
+
+
+        <div class="card">
+
+            <img
+                src="./image/WhatsApp Image 2026-07-21 at 10.17.24 AM.jpeg"
+                alt="Fashion Hair Clip">
+
+            <h3>Fashion Hair Clip</h3>
+
+            <p>
+                Beautiful and fashionable hair accessory
+                for every occasion.
+            </p>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<div style="text-align:center; padding:40px;">
+
+    <a href="index.html" class="btn">
+        ← Back to Home
+    </a>
+
+</div>
+
+
+<style>
+
+.collections {
+    padding: 70px 8%;
+}
+
+.collections h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+}
+
+.products .card {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.products .card:hover {
+    transform: translateY(-8px);
+}
+
+.products .card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.products .card h3 {
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+
+.products .card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+
+    .products {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 600px) {
+
+    .products {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+</style>
+
+
+</body>
+</html>
