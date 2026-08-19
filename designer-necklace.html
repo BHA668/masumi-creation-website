@@ -1,65 +1,936 @@
-section id="product1" class="product-details">
+<!DOCTYPE html>
+<html lang="en">
 
-<h2>Designer Necklace Set</h2>
+<head>
 
-<div class="product-box">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="product-image">
+<title>Masumi Creation | Designer Necklace Set</title>
 
-<img id="mainImage"
-src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
-alt="Designer Necklace"
-onclick="openImage(this.src)">
-<div class="gallery">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
-onclick="changeImage(this.src)">
+<link
+href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.26 AM (1).jpeg"
-onclick="changeImage(this.src)">
+<link rel="stylesheet" href="style.css">
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.28 AM.jpeg"
-onclick="changeImage(this.src)">
+</head>
 
-</div>
 
-</div>
+<body>
 
-<div class="product-info">
 
-<h3>Premium Artificial Necklace</h3>
+<!-- ================= HEADER ================= -->
 
-<p>
-Beautiful premium-quality artificial necklace perfect for weddings,
-festivals, parties and special occasions.
-</p>
+<header>
 
-<h2>Price: Contact Us</h2>
-<div class="quantity-box">
+<div class="logo">
 
-<button onclick="changeQty(-1)">−</button>
-
-<span id="qty">1</span>
-
-<button onclick="changeQty(1)">+</button>
+<img
+src="./image/mc 1.jpeg"
+alt="Masumi Creation Logo">
 
 </div>
-<a href="https://wa.me/91XXXXXXXXXX" class="btn">
-🟢 Order on WhatsApp
+
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="index.html#collections">Collections</a>
+
+<a href="index.html#about">About</a>
+
+<a href="index.html#contact">Contact</a>
+
+
+<a
+href="javascript:void(0)"
+class="cart-icon"
+onclick="openCart()">
+
+🛒 Cart
+<span id="cart-count">0</span>
+
 </a>
 
-<button class="btn" onclick="addToCart('Designer Necklace Set', quantity)">
 
-🛒 Add to Cart
+<a
+href="javascript:void(0)"
+class="cart-icon"
+onclick="openWishlist()">
 
-</button>
-
-<button class="btn" onclick="addToWishlist('Designer Necklace Set')">
 ❤️ Wishlist
-</button>
+<span id="wishlist-count">0</span>
+
+</a>
+
+</nav>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+<div class="hero-text">
+
+<h1>Designer Necklace Set</h1>
+
+<p>
+
+Discover our premium artificial designer necklace,
+carefully selected for weddings, festivals,
+parties and every special occasion.
+
+</p>
+
+
+<a
+href="#product1"
+class="btn">
+
+Explore Necklace
+
+</a>
+
+</div>
+
+
+<div class="hero-image">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
+alt="Designer Necklace Set">
+
+</div>
+
+</section>
+
+
+
+<!-- ================= HIGHLIGHT ================= -->
+
+<section class="highlight">
+
+<h2>
+✨ Elegance That Shines With You ✨
+</h2>
+
+<p>
+Premium Artificial Jewellery • Elegant Designs • Affordable Prices
+</p>
+
+
+<div class="highlight-items">
+
+<div>
+
+<h3>💎 Premium Quality</h3>
+
+</div>
+
+
+<div>
+
+<h3>💖 Elegant Design</h3>
+
+</div>
+
+
+<div>
+
+<h3>🚚 Affordable Prices</h3>
 
 </div>
 
 </div>
 
 </section>
+
+
+
+<!-- ================= PRODUCT ================= -->
+
+<section
+id="product1"
+class="product-details">
+
+
+<h2>Designer Necklace Set</h2>
+
+
+<div class="product-box">
+
+
+<!-- PRODUCT IMAGE -->
+
+<div class="product-image">
+
+
+<img
+id="mainImage"
+src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
+alt="Designer Necklace"
+onclick="openImage(this.src)"
+>
+
+
+<!-- IMAGE GALLERY -->
+
+<div class="gallery">
+
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
+alt="Designer Necklace"
+onclick="changeImage(this.src)"
+>
+
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.26 AM (1).jpeg"
+alt="Traditional Necklace"
+onclick="changeImage(this.src)"
+>
+
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.28 AM.jpeg"
+alt="Luxury Necklace"
+onclick="changeImage(this.src)"
+>
+
+
+</div>
+
+</div>
+
+
+
+<!-- PRODUCT INFORMATION -->
+
+<div class="product-info">
+
+
+<h3>
+Premium Artificial Necklace
+</h3>
+
+
+<p>
+
+Beautiful premium-quality artificial necklace
+perfect for weddings, festivals, parties
+and special occasions.
+
+Designed to give your outfit an elegant
+and luxurious appearance.
+
+</p>
+
+
+<h2>
+Price: Contact Us
+</h2>
+
+
+
+<!-- QUANTITY -->
+
+<div class="quantity-box">
+
+
+<button
+onclick="changeQty(-1)">
+
+−
+
+</button>
+
+
+<span id="qty">
+1
+</span>
+
+
+<button
+onclick="changeQty(1)">
+
++
+
+</button>
+
+
+</div>
+
+
+
+<!-- WHATSAPP -->
+
+<a
+href="https://wa.me/91XXXXXXXXXX"
+class="btn"
+target="_blank">
+
+🟢 Order on WhatsApp
+
+</a>
+
+
+
+<!-- CART -->
+
+<button
+class="btn"
+onclick="addToCart('Designer Necklace Set', quantity)">
+
+🛒 Add to Cart
+
+</button>
+
+
+
+<!-- WISHLIST -->
+
+<button
+class="btn"
+onclick="addToWishlist('Designer Necklace Set')">
+
+❤️ Wishlist
+
+</button>
+
+
+</div>
+
+</div>
+
+
+<!-- BACK TO HOME -->
+
+<div
+style="text-align:center; margin-top:40px;">
+
+<a
+href="index.html"
+class="btn">
+
+← Back to Home
+
+</a>
+
+</div>
+
+
+</section>
+
+
+
+<!-- ================= ABOUT PRODUCT ================= -->
+
+<section class="about">
+
+<h2>
+About This Necklace
+</h2>
+
+
+<p>
+
+Our Designer Necklace Set is perfect for
+customers looking for elegant artificial jewellery
+without compromising on style.
+
+It is suitable for weddings, festivals,
+parties, celebrations and gifting.
+
+For availability, colour options and pricing,
+please contact Masumi Creation on WhatsApp.
+
+</p>
+
+</section>
+
+
+
+<!-- ================= REVIEWS ================= -->
+
+<section class="reviews">
+
+<h2>
+What Our Customers Say ❤️
+</h2>
+
+
+<div class="review-container">
+
+
+<div class="review-card">
+
+⭐⭐⭐⭐⭐
+
+<p>
+
+"Beautiful jewellery with excellent quality.
+Highly recommended!"
+
+</p>
+
+<h4>
+— Priya Patel
+</h4>
+
+</div>
+
+
+
+<div class="review-card">
+
+⭐⭐⭐⭐⭐
+
+<p>
+
+"Very stylish collection.
+I loved the necklace."
+
+</p>
+
+<h4>
+— Riya Shah
+</h4>
+
+</div>
+
+
+
+<div class="review-card">
+
+⭐⭐⭐⭐⭐
+
+<p>
+
+"Premium looking jewellery
+at an affordable price."
+
+</p>
+
+<h4>
+— Neha Verma
+</h4>
+
+</div>
+
+
+</div>
+
+</section>
+
+
+
+<!-- ================= CONTACT ================= -->
+
+<section
+id="contact"
+class="contact">
+
+<h2>
+Contact Us
+</h2>
+
+
+<p>
+
+<strong>📍 Address:</strong>
+Regent Residency, Near Pratham Circle, Surat
+
+</p>
+
+
+<p>
+
+<strong>📞 WhatsApp:</strong>
++91 XXXXXXXXXX
+
+</p>
+
+
+<p>
+
+<strong>📧 Email:</strong>
+masumicreation@gmail.com
+
+</p>
+
+
+<a
+href="https://wa.me/91XXXXXXXXXX"
+class="btn"
+target="_blank">
+
+Chat on WhatsApp
+
+</a>
+
+</section>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<p>
+© 2026 Masumi Creation. All Rights Reserved.
+</p>
+
+<p>
+Designed with ❤️ by Bhavya
+</p>
+
+</footer>
+
+
+
+<!-- ================= FLOATING WHATSAPP ================= -->
+
+<a
+href="https://wa.me/91XXXXXXXXXX"
+class="whatsapp"
+target="_blank">
+
+💬
+
+</a>
+
+
+
+<!-- ================= CART POPUP ================= -->
+
+<div
+id="cartPopup"
+class="cart-popup">
+
+
+<h2>
+🛒 Shopping Cart
+</h2>
+
+
+<div id="cartItems">
+
+<p>
+Your cart is empty.
+</p>
+
+</div>
+
+
+<button
+class="btn"
+onclick="checkoutWhatsApp()">
+
+✅ Checkout on WhatsApp
+
+</button>
+
+
+<button
+class="btn"
+onclick="closeCart()">
+
+Close
+
+</button>
+
+
+</div>
+
+
+
+<!-- ================= WISHLIST POPUP ================= -->
+
+<div
+id="wishlistPopup"
+class="cart-popup">
+
+
+<h2>
+❤️ Wishlist
+</h2>
+
+
+<div id="wishlistItems">
+
+<p>
+Your wishlist is empty.
+</p>
+
+</div>
+
+
+<button
+class="btn"
+onclick="closeWishlist()">
+
+Close
+
+</button>
+
+
+</div>
+
+
+
+<!-- ================= IMAGE MODAL ================= -->
+
+<div
+id="imageModal"
+class="image-modal">
+
+
+<span
+class="close"
+onclick="closeImage()">
+
+&times;
+
+</span>
+
+
+<img
+id="zoomedImage"
+alt="Zoomed Necklace">
+
+</div>
+
+
+
+<!-- ================= JAVASCRIPT ================= -->
+
+<script>
+
+
+/* =========================================
+   IMAGE GALLERY
+========================================= */
+
+
+function changeImage(image) {
+
+document.getElementById("mainImage").src = image;
+
+}
+
+
+
+/* =========================================
+   IMAGE ZOOM
+========================================= */
+
+
+function openImage(image) {
+
+document.getElementById("imageModal").style.display = "flex";
+
+document.getElementById("zoomedImage").src = image;
+
+}
+
+
+function closeImage() {
+
+document.getElementById("imageModal").style.display = "none";
+
+}
+
+
+
+/* =========================================
+   CART
+========================================= */
+
+
+let cart = [];
+
+let wishlist = [];
+
+let quantity = 1;
+
+
+
+function addToCart(productName, productQuantity) {
+
+
+productQuantity = parseInt(productQuantity);
+
+
+if (isNaN(productQuantity) || productQuantity < 1) {
+
+productQuantity = 1;
+
+}
+
+
+cart.push({
+
+name: productName,
+
+qty: productQuantity
+
+});
+
+
+document.getElementById("cart-count").innerText = cart.length;
+
+
+updateCart();
+
+
+alert("✅ Added to Cart!");
+
+}
+
+
+
+function updateCart() {
+
+
+let items = "";
+
+
+if (cart.length === 0) {
+
+items = "<p>Your cart is empty.</p>";
+
+}
+
+
+cart.forEach(function(product) {
+
+
+items +=
+
+"<p>🛍️ " +
+product.name +
+" × " +
+product.qty +
+"</p>";
+
+});
+
+
+document.getElementById("cartItems").innerHTML = items;
+
+}
+
+
+
+function openCart() {
+
+document.getElementById("cartPopup").style.display = "block";
+
+}
+
+
+
+function closeCart() {
+
+document.getElementById("cartPopup").style.display = "none";
+
+}
+
+
+
+/* =========================================
+   QUANTITY
+========================================= */
+
+
+function changeQty(change) {
+
+
+quantity += change;
+
+
+if (quantity < 1) {
+
+quantity = 1;
+
+}
+
+
+document.getElementById("qty").innerText = quantity;
+
+}
+
+
+
+/* =========================================
+   WISHLIST
+========================================= */
+
+
+function addToWishlist(productName) {
+
+
+if (!wishlist.includes(productName)) {
+
+
+wishlist.push(productName);
+
+
+document.getElementById("wishlist-count").innerText =
+wishlist.length;
+
+
+let items = "";
+
+
+wishlist.forEach(function(product) {
+
+
+items +=
+
+"<p>❤️ " +
+product +
+"</p>";
+
+});
+
+
+document.getElementById("wishlistItems").innerHTML = items;
+
+
+alert(
+"❤️ " +
+productName +
+" added to Wishlist!"
+);
+
+
+}
+
+
+else {
+
+
+alert(
+"⚠️ Product is already in your Wishlist!"
+);
+
+
+}
+
+}
+
+
+
+function openWishlist() {
+
+document.getElementById("wishlistPopup").style.display = "block";
+
+}
+
+
+
+function closeWishlist() {
+
+document.getElementById("wishlistPopup").style.display = "none";
+
+}
+
+
+
+/* =========================================
+   WHATSAPP CHECKOUT
+========================================= */
+
+
+function checkoutWhatsApp() {
+
+
+if (cart.length === 0) {
+
+
+alert("Your cart is empty!");
+
+return;
+
+}
+
+
+let message =
+"🛍️ Masumi Creation Order%0A%0A";
+
+
+let total = 0;
+
+
+cart.forEach(function(product, index) {
+
+
+message +=
+
+(index + 1) +
+". " +
+product.name +
+" × " +
+product.qty +
+"%0A";
+
+
+total += Number(product.qty);
+
+});
+
+
+message +=
+"%0A--------------------%0A";
+
+
+message +=
+"🧾 Total Items: " +
+total +
+"%0A";
+
+
+message +=
+"%0AThank you for shopping with Masumi Creation ❤️";
+
+
+window.open(
+
+"https://wa.me/91XXXXXXXXXX?text=" +
+message,
+
+"_blank"
+
+);
+
+
+cart = [];
+
+
+document.getElementById("cart-count").innerText = "0";
+
+
+updateCart();
+
+
+closeCart();
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
