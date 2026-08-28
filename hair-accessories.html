@@ -2,181 +2,39 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Masumi Creation | Hair Accessories</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Masumi Creation | Hair Accessories Collection</title>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+<link
+href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
 
-<body>
-
-<header>
-
-    <div class="logo">
-        <img src="./image/mc 1.jpeg" alt="Masumi Creation Logo">
-    </div>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html#collections">Collections</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#contact">Contact</a>
-    </nav>
-
-</header>
-
-
-<section class="hero" id="home">
-
-    <div class="hero-text">
-
-        <h1>Premium Hair Accessories</h1>
-
-        <p>
-            Discover our stylish collection of hair clips,
-            hair claws and beautiful accessories for every occasion.
-        </p>
-
-        <a href="#collections" class="btn">
-            Explore Hair Accessories
-        </a>
-
-    </div>
-
-    <div class="hero-image">
-
-        <img
-            src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg"
-            alt="Hair Accessories">
-
-    </div>
-
-</section>
-
-
-<section class="highlight">
-
-    <h2>✨ Style That Completes Your Look ✨</h2>
-
-    <p>
-        Premium Quality • Stylish Designs • Affordable Prices
-    </p>
-
-    <div class="highlight-items">
-
-        <div>
-            <h3>💎 Premium Quality</h3>
-        </div>
-
-        <div>
-            <h3>💖 Latest Designs</h3>
-        </div>
-
-        <div>
-            <h3>🚚 Affordable Prices</h3>
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="collections" class="collections">
-
-    <h2>💇 Hair Accessories Collection</h2>
-
-    <div class="products">
-
-
-        <div class="card">
-
-            <img
-                src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg"
-                alt="Crystal Hair Clips">
-
-            <h3>Crystal Hair Clips</h3>
-
-            <p>
-                Premium quality stylish hair clips
-                for parties and special occasions.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <img
-                src="./image/WhatsApp Image 2026-07-21 at 10.17.22 AM (1).jpeg"
-                alt="Hair Claw">
-
-            <h3>Hair Claw</h3>
-
-            <p>
-                Strong grip and stylish design
-                for comfortable everyday use.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <img
-                src="./image/WhatsApp Image 2026-07-21 at 10.17.24 AM.jpeg"
-                alt="Fashion Hair Clip">
-
-            <h3>Fashion Hair Clip</h3>
-
-            <p>
-                Beautiful and fashionable hair accessory
-                for every occasion.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<div style="text-align:center; padding:40px;">
-
-    <a href="index.html" class="btn">
-        ← Back to Home
-    </a>
-
-</div>
-
+<link rel="stylesheet" href="style.css">
 
 <style>
 
-.collections {
+.hair-collection {
     padding: 70px 8%;
 }
 
-.collections h2 {
+.hair-collection h2 {
     text-align: center;
     margin-bottom: 40px;
 }
 
-.products {
+.hair-products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
-.products .card {
+.hair-card {
     background: white;
     padding: 20px;
     border-radius: 18px;
@@ -185,30 +43,40 @@
     transition: 0.3s;
 }
 
-.products .card:hover {
+.hair-card:hover {
     transform: translateY(-8px);
 }
 
-.products .card img {
+.hair-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.hair-card img {
     width: 100%;
-    height: 260px;
+    height: 300px;
     object-fit: cover;
     border-radius: 12px;
 }
 
-.products .card h3 {
+.hair-card h3 {
     margin-top: 18px;
     margin-bottom: 10px;
 }
 
-.products .card p {
+.hair-card p {
     color: #666;
     line-height: 1.6;
 }
 
+.back-home {
+    text-align: center;
+    margin-top: 45px;
+}
+
 @media (max-width: 900px) {
 
-    .products {
+    .hair-products {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -216,7 +84,7 @@
 
 @media (max-width: 600px) {
 
-    .products {
+    .hair-products {
         grid-template-columns: 1fr;
     }
 
@@ -224,7 +92,316 @@
 
 </style>
 
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="logo">
+
+<img
+src="./image/mc 1.jpeg"
+alt="Masumi Creation Logo">
+
+</div>
+
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="index.html#collections">Collections</a>
+
+<a href="index.html#about">About</a>
+
+<a href="index.html#contact">Contact</a>
+
+
+<a
+href="javascript:void(0)"
+class="cart-icon"
+onclick="openCart()">
+
+🛒 Cart <span id="cart-count">0</span>
+
+</a>
+
+
+<a
+href="javascript:void(0)"
+class="cart-icon"
+onclick="openWishlist()">
+
+❤️ Wishlist <span id="wishlist-count">0</span>
+
+</a>
+
+</nav>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>Premium Hair Accessories</h1>
+
+<p>
+
+Discover our beautiful collection of hair clips
+and stylish hair accessories, perfect for
+everyday looks, parties and special occasions.
+
+</p>
+
+<a
+href="#collections"
+class="btn">
+
+Explore Hair Accessories
+
+</a>
+
+</div>
+
+
+<div class="hero-image">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.22 AM (1).jpeg"
+alt="Hair Accessories">
+
+</div>
+
+</section>
+
+
+
+<!-- ================= HIGHLIGHT ================= -->
+
+<section class="highlight">
+
+<h2>
+✨ Style That Completes Your Look ✨
+</h2>
+
+<p>
+Premium Hair Accessories • Latest Designs • Affordable Prices
+</p>
+
+
+<div class="highlight-items">
+
+<div>
+<h3>💎 Premium Quality</h3>
+</div>
+
+<div>
+<h3>💖 Latest Designs</h3>
+</div>
+
+<div>
+<h3>🚚 Affordable Prices</h3>
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= HAIR PRODUCTS ================= -->
+
+<section
+id="collections"
+class="hair-collection">
+
+<h2>
+💎 Hair Accessories Collection
+</h2>
+
+
+<div class="hair-products">
+
+
+<!-- ================= HAIR PRODUCT 1 ================= -->
+
+<div class="hair-card">
+
+<a href="hair-product.html?product=1">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.22 AM (1).jpeg"
+alt="Hair Clip 01">
+
+<h3>
+Hair Clip 01
+</h3>
+
+<p>
+Elegant hair clip suitable for everyday styling
+and special occasions.
+</p>
+
+</a>
+
+</div>
+
+
+
+<!-- ================= HAIR PRODUCT 2 ================= -->
+
+<div class="hair-card">
+
+<a href="hair-product.html?product=2">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg"
+alt="Hair Clip 02">
+
+<h3>
+Hair Clip 02
+</h3>
+
+<p>
+Beautiful stylish hair clip designed to complete
+your elegant look.
+</p>
+
+</a>
+
+</div>
+
+
+
+<!-- ================= HAIR PRODUCT 3 ================= -->
+
+<div class="hair-card">
+
+<a href="hair-product.html?product=3">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.24 AM.jpeg"
+alt="Hair Clip 03">
+
+<h3>
+Hair Clip 03
+</h3>
+
+<p>
+Stylish hair accessory perfect for parties,
+festivals and everyday wear.
+</p>
+
+</a>
+
+</div>
+
+
+</div>
+
+
+
+<!-- BACK -->
+
+<div class="back-home">
+
+<a
+href="index.html"
+class="btn">
+
+← Back to Home
+
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= CART ================= -->
+
+<div
+id="cartPopup"
+class="cart-popup">
+
+<h2>
+🛒 Shopping Cart
+</h2>
+
+<div id="cartItems">
+
+<p>
+Your cart is empty.
+</p>
+
+</div>
+
+
+<button
+class="btn"
+onclick="checkoutWhatsApp()">
+
+✅ Checkout on WhatsApp
+
+</button>
+
+
+<button
+class="btn"
+onclick="closeCart()">
+
+Close
+
+</button>
+
+</div>
+
+
+
+<!-- ================= WISHLIST ================= -->
+
+<div
+id="wishlistPopup"
+class="cart-popup">
+
+<h2>
+❤️ Wishlist
+</h2>
+
+<div id="wishlistItems">
+
+<p>
+Your wishlist is empty.
+</p>
+
+</div>
+
+
+<button
+class="btn"
+onclick="closeWishlist()">
+
+Close
+
+</button>
+
+</div>
+
+
+
 <script src="script.js"></script>
 
 </body>
+
 </html>
