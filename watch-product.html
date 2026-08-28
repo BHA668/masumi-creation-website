@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Masumi Creation | Watch</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.watch-product {
+    padding: 70px 8%;
+}
+
+.watch-product > h2 {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.product-box {
+    max-width: 1100px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: center;
+}
+
+.product-image {
+    text-align: center;
+}
+
+.product-image img {
+    width: 100%;
+    max-width: 500px;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 20px;
+    cursor: zoom-in;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+
+.product-info h3 {
+    font-family: "Cinzel", serif;
+    font-size: 30px;
+    color: #8b1e2d;
+    margin-bottom: 20px;
+}
+
+.product-info p {
+    line-height: 1.8;
+    color: #666;
+}
+
+.product-price {
+    font-size: 24px;
+    color: #8b1e2d;
+    margin: 25px 0;
+}
+
+.quantity-box {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin: 25px 0;
+}
+
+.quantity-box button {
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    background: #8b1e2d;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.quantity-box span {
+    font-size: 22px;
+    font-weight: 600;
+    min-width: 30px;
+    text-align: center;
+}
+
+.product-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.about-product {
+    max-width: 900px;
+    margin: 70px auto;
+    padding: 40px;
+    text-align: center;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.07);
+}
+
+.image-modal {
+    display: none;
+    position: fixed;
+    z-index: 9999;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.85);
+    align-items: center;
+    justify-content: center;
+}
+
+.image-modal img {
+    max-width: 90%;
+    max-height: 85%;
+    object-fit: contain;
+    border-radius: 10px;
+}
+
+.image-modal .close {
+    position: absolute;
+    top: 25px;
+    right: 35px;
+    color: white;
+    font-size: 45px;
+    cursor: pointer;
+}
+
+@media (max-width: 800px) {
+
+    .product-box {
+        grid-template-columns: 1fr;
+        gap: 35px;
+    }
+
+    .product-image img {
+        height: 400px;
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    .watch-product {
+        padding: 50px 5%;
+    }
+
+    .product-image img {
+        height: 330px;
+    }
+
+    .product-buttons {
+        flex-direction: column;
+    }
+
+    .product-buttons .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="logo">
+
+<img
+src="./image/mc 1.jpeg"
+alt="Masumi Creation Logo">
+
+</div>
+
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="index.html#collections">Collections</a>
+
+<a href="index.html#about">About</a>
+
+<a href="index.html#contact">Contact</a>
+
+
+<a
+href="javascript:void(0)"
+class="cart-icon"
+onclick="openCart()">
+
+🛒 Cart
+<span id="cart-count">0</span>
+
+</a>
+
+
+<a
+href="javascript:void(0)"
+class="cart-icon"
+onclick="openWishlist()">
+
+❤️ Wishlist
+<span id="wishlist-count">0</span>
+
+</a>
+
+</nav>
+
+</header>
+
+
+
+<!-- ================= PRODUCT ================= -->
+
+<section class="watch-product">
+
+<h2 id="pageTitle">
+Watch
+</h2>
+
+
+<div class="product-box">
+
+
+<!-- IMAGE -->
+
+<div class="product-image">
+
+<img
+id="mainImage"
+src=""
+alt="Watch"
+onclick="openImage(this.src)">
+
+</div>
+
+
+
+<!-- INFORMATION -->
+
+<div class="product-info">
+
+<h3 id="productName">
+Watch
+</h3>
+
+
+<p id="productDescription">
+
+Beautiful stylish watch suitable for
+everyday wear, parties, gifting and
+special occasions.
+
+</p>
+
+
+<h2 class="product-price">
+💎 Price: Contact Us
+</h2>
+
+
+
+<!-- QUANTITY -->
+
+<div class="quantity-box">
+
+<button onclick="changeQty(-1)">
+−
+</button>
+
+<span id="qty">
+1
+</span>
+
+<button onclick="changeQty(1)">
++
+</button>
+
+</div>
+
+
+
+<!-- BUTTONS -->
+
+<div class="product-buttons">
+
+
+<a
+id="whatsappButton"
+href="#"
+class="btn"
+target="_blank">
+
+🟢 Order on WhatsApp
+
+</a>
+
+
+<button
+class="btn"
+onclick="addCurrentProductToCart()">
+
+🛒 Add to Cart
+
+</button>
+
+
+<button
+class="btn"
+onclick="addCurrentProductToWishlist()">
+
+❤️ Wishlist
+
+</button>
+
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- BACK -->
+
+<div style="text-align:center; margin-top:50px;">
+
+<a
+href="watches.html"
+class="btn">
+
+← Back to Watches
+
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= ABOUT ================= -->
+
+<section class="about-product">
+
+<h2>
+About This Watch
+</h2>
+
+<p>
+
+Our watch collection combines stylish designs
+with an elegant appearance at an affordable price.
+
+Perfect for everyday wear, parties, festivals,
+celebrations and gifting.
+
+For availability, colour options and pricing,
+please contact Masumi Creation on WhatsApp.
+
+</p>
+
+</section>
+
+
+
+<!-- ================= CART ================= -->
+
+<div
+id="cartPopup"
+class="cart-popup">
+
+<h2>
+🛒 Shopping Cart
+</h2>
+
+<div id="cartItems">
+
+<p>
+Your cart is empty.
+</p>
+
+</div>
+
+
+<button
+class="btn"
+onclick="checkoutWhatsApp()">
+
+✅ Checkout on WhatsApp
+
+</button>
+
+
+<button
+class="btn"
+onclick="closeCart()">
+
+Close
+
+</button>
+
+</div>
+
+
+
+<!-- ================= WISHLIST ================= -->
+
+<div
+id="wishlistPopup"
+class="cart-popup">
+
+<h2>
+❤️ Wishlist
+</h2>
+
+<div id="wishlistItems">
+
+<p>
+Your wishlist is empty.
+</p>
+
+</div>
+
+
+<button
+class="btn"
+onclick="closeWishlist()">
+
+Close
+
+</button>
+
+</div>
+
+
+
+<!-- ================= IMAGE MODAL ================= -->
+
+<div
+id="imageModal"
+class="image-modal">
+
+<span
+class="close"
+onclick="closeImage()">
+
+&times;
+
+</span>
+
+
+<img
+id="zoomedImage"
+src=""
+alt="Zoomed Watch">
+
+</div>
+
+
+
+<!-- ================= WATCH DATA ================= -->
+
+<script>
+
+const watchProducts = {
+
+    1: {
+        name: "Watch 01",
+        image: "./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (1).jpeg",
+        description: "Elegant stylish watch suitable for everyday wear, parties and special occasions."
+    },
+
+    2: {
+        name: "Watch 02",
+        image: "./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (2).jpeg",
+        description: "Beautiful stylish watch perfect for parties, gifting and everyday style."
+    },
+
+    3: {
+        name: "Ring Watch 03",
+        image: "./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (3).jpeg",
+        description: "Unique ring watch design for customers looking for a fashionable and distinctive accessory."
+    }
+
+};
+
+
+const urlParams =
+    new URLSearchParams(window.location.search);
+
+
+let productNumber =
+    Number(urlParams.get("product"));
+
+
+if (!watchProducts[productNumber]) {
+
+    productNumber = 1;
+
+}
+
+
+const currentProduct =
+    watchProducts[productNumber];
+
+
+
+/* PRODUCT INFORMATION */
+
+document.title =
+    "Masumi Creation | " +
+    currentProduct.name;
+
+
+document.getElementById("pageTitle").innerText =
+    currentProduct.name;
+
+
+document.getElementById("productName").innerText =
+    currentProduct.name;
+
+
+document.getElementById("productDescription").innerText =
+    currentProduct.description;
+
+
+document.getElementById("mainImage").src =
+    currentProduct.image;
+
+
+document.getElementById("mainImage").alt =
+    currentProduct.name;
+
+
+
+/* WHATSAPP */
+
+const whatsappNumber =
+    "917874216100";
+
+
+const whatsappMessage =
+    "Hello Masumi Creation! I am interested in " +
+    currentProduct.name +
+    ". Please share the price and availability.";
+
+
+document.getElementById("whatsappButton").href =
+    "https://wa.me/" +
+    whatsappNumber +
+    "?text=" +
+    encodeURIComponent(whatsappMessage);
+
+
+
+/* CART */
+
+function addCurrentProductToCart() {
+
+    addToCart(
+        currentProduct.name,
+        quantity
+    );
+
+}
+
+
+/* WISHLIST */
+
+function addCurrentProductToWishlist() {
+
+    addToWishlist(
+        currentProduct.name
+    );
+
+}
+
+
+/* IMAGE VIEWER */
+
+function openImage(image) {
+
+    const modal =
+        document.getElementById("imageModal");
+
+    const zoomedImage =
+        document.getElementById("zoomedImage");
+
+    if (modal && zoomedImage) {
+
+        zoomedImage.src = image;
+
+        modal.style.display = "flex";
+
+    }
+
+}
+
+
+function closeImage() {
+
+    const modal =
+        document.getElementById("imageModal");
+
+    if (modal) {
+
+        modal.style.display = "none";
+
+    }
+
+}
+
+</script>
+
+
+<script src="script.js"></script>
+
+
+</body>
+
+</html>

@@ -2,181 +2,39 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Masumi Creation | Watches Collection</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Masumi Creation | Watches Collection</title>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+<link
+href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
 
-<body>
-
-<header>
-
-    <div class="logo">
-        <img src="./image/mc 1.jpeg" alt="Masumi Creation Logo">
-    </div>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html#collections">Collections</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#contact">Contact</a>
-    </nav>
-
-</header>
-
-
-<section class="hero" id="home">
-
-    <div class="hero-text">
-
-        <h1>⌚ Premium Watches Collection</h1>
-
-        <p>
-            Discover our stylish collection of ladies watches,
-            designed to add elegance to every outfit and occasion.
-        </p>
-
-        <a href="#collections" class="btn">
-            Explore Watches
-        </a>
-
-    </div>
-
-    <div class="hero-image">
-
-        <img
-            src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (1).jpeg"
-            alt="Masumi Watch">
-
-    </div>
-
-</section>
-
-
-<section class="highlight">
-
-    <h2>✨ Time Meets Elegance ✨</h2>
-
-    <p>
-        Stylish Designs • Premium Finish • Affordable Prices
-    </p>
-
-    <div class="highlight-items">
-
-        <div>
-            <h3>💎 Premium Quality</h3>
-        </div>
-
-        <div>
-            <h3>💖 Stylish Designs</h3>
-        </div>
-
-        <div>
-            <h3>🚚 Affordable Prices</h3>
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="collections" class="collections">
-
-    <h2>⌚ Watches Collection</h2>
-
-    <div class="products">
-
-
-        <div class="card">
-
-            <img
-                src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (1).jpeg"
-                alt="Classic Ladies Watch">
-
-            <h3>Classic Ladies Watch</h3>
-
-            <p>
-                Elegant everyday watch with a beautiful
-                classic design.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <img
-                src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (2).jpeg"
-                alt="Luxury Ladies Watch">
-
-            <h3>Luxury Ladies Watch</h3>
-
-            <p>
-                Premium ladies watch with a stylish
-                and elegant finish.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <img
-                src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (3).jpeg"
-                alt="Fashion Ladies Watch">
-
-            <h3>Fashion Ladies Watch</h3>
-
-            <p>
-                Beautiful fashion watch to complete
-                your perfect look.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<div style="text-align:center; padding:40px;">
-
-    <a href="index.html" class="btn">
-        ← Back to Home
-    </a>
-
-</div>
-
+<link rel="stylesheet" href="style.css">
 
 <style>
 
-.collections {
+.watch-collection {
     padding: 70px 8%;
 }
 
-.collections h2 {
+.watch-collection h2 {
     text-align: center;
     margin-bottom: 40px;
 }
 
-.products {
+.watch-products {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
 }
 
-.products .card {
+.watch-card {
     background: white;
     padding: 20px;
     border-radius: 18px;
@@ -185,30 +43,40 @@
     transition: 0.3s;
 }
 
-.products .card:hover {
+.watch-card:hover {
     transform: translateY(-8px);
 }
 
-.products .card img {
+.watch-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.watch-card img {
     width: 100%;
-    height: 260px;
+    height: 300px;
     object-fit: cover;
     border-radius: 12px;
 }
 
-.products .card h3 {
+.watch-card h3 {
     margin-top: 18px;
     margin-bottom: 10px;
 }
 
-.products .card p {
+.watch-card p {
     color: #666;
     line-height: 1.6;
 }
 
+.back-home {
+    text-align: center;
+    margin-top: 45px;
+}
+
 @media (max-width: 900px) {
 
-    .products {
+    .watch-products {
         grid-template-columns: repeat(2, 1fr);
     }
 
@@ -216,7 +84,7 @@
 
 @media (max-width: 600px) {
 
-    .products {
+    .watch-products {
         grid-template-columns: 1fr;
     }
 
@@ -224,7 +92,313 @@
 
 </style>
 
+</head>
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="logo">
+
+<img
+src="./image/mc 1.jpeg"
+alt="Masumi Creation Logo">
+
+</div>
+
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="index.html#collections">Collections</a>
+
+<a href="index.html#about">About</a>
+
+<a href="index.html#contact">Contact</a>
+
+
+<a
+href="javascript:void(0)"
+class="cart-icon"
+onclick="openCart()">
+
+🛒 Cart <span id="cart-count">0</span>
+
+</a>
+
+
+<a
+href="javascript:void(0)"
+class="cart-icon"
+onclick="openWishlist()">
+
+❤️ Wishlist <span id="wishlist-count">0</span>
+
+</a>
+
+</nav>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>Premium Watches Collection</h1>
+
+<p>
+
+Discover our stylish collection of watches,
+perfect for everyday wear, parties,
+gifting and special occasions.
+
+</p>
+
+<a
+href="#collections"
+class="btn">
+
+Explore Watches
+
+</a>
+
+</div>
+
+
+<div class="hero-image">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (1).jpeg"
+alt="Watch Collection">
+
+</div>
+
+</section>
+
+
+
+<!-- ================= HIGHLIGHT ================= -->
+
+<section class="highlight">
+
+<h2>
+✨ Time Meets Elegance ✨
+</h2>
+
+<p>
+Stylish Watches • Elegant Designs • Affordable Prices
+</p>
+
+
+<div class="highlight-items">
+
+<div>
+<h3>💎 Premium Quality</h3>
+</div>
+
+<div>
+<h3>💖 Latest Designs</h3>
+</div>
+
+<div>
+<h3>🚚 Affordable Prices</h3>
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= WATCH PRODUCTS ================= -->
+
+<section
+id="collections"
+class="watch-collection">
+
+<h2>
+⌚ Watches Collection
+</h2>
+
+
+<div class="watch-products">
+
+
+<!-- WATCH 1 -->
+
+<div class="watch-card">
+
+<a href="watch-product.html?product=1">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (1).jpeg"
+alt="Watch 01">
+
+<h3>
+Watch 01
+</h3>
+
+<p>
+Elegant stylish watch suitable for everyday
+wear and special occasions.
+</p>
+
+</a>
+
+</div>
+
+
+
+<!-- WATCH 2 -->
+
+<div class="watch-card">
+
+<a href="watch-product.html?product=2">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (2).jpeg"
+alt="Watch 02">
+
+<h3>
+Watch 02
+</h3>
+
+<p>
+Beautiful watch design perfect for parties,
+gifting and everyday style.
+</p>
+
+</a>
+
+</div>
+
+
+
+<!-- WATCH 3 -->
+
+<div class="watch-card">
+
+<a href="watch-product.html?product=3">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (3).jpeg"
+alt="Ring Watch 03">
+
+<h3>
+Ring Watch 03
+</h3>
+
+<p>
+Unique ring watch design for a stylish
+and fashionable look.
+</p>
+
+</a>
+
+</div>
+
+
+</div>
+
+
+
+<div class="back-home">
+
+<a
+href="index.html"
+class="btn">
+
+← Back to Home
+
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= CART ================= -->
+
+<div
+id="cartPopup"
+class="cart-popup">
+
+<h2>
+🛒 Shopping Cart
+</h2>
+
+<div id="cartItems">
+
+<p>
+Your cart is empty.
+</p>
+
+</div>
+
+
+<button
+class="btn"
+onclick="checkoutWhatsApp()">
+
+✅ Checkout on WhatsApp
+
+</button>
+
+
+<button
+class="btn"
+onclick="closeCart()">
+
+Close
+
+</button>
+
+</div>
+
+
+
+<!-- ================= WISHLIST ================= -->
+
+<div
+id="wishlistPopup"
+class="cart-popup">
+
+<h2>
+❤️ Wishlist
+</h2>
+
+<div id="wishlistItems">
+
+<p>
+Your wishlist is empty.
+</p>
+
+</div>
+
+
+<button
+class="btn"
+onclick="closeWishlist()">
+
+Close
+
+</button>
+
+</div>
+
+
+
 <script src="script.js"></script>
 
 </body>
+
 </html>
