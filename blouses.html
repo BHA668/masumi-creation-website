@@ -2,181 +2,41 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Masumi Creation | Designer Blouses</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Masumi Creation | Designer Blouses</title>
 
-    <link
-        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap"
-        rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <link rel="stylesheet" href="style.css">
-</head>
+<link
+href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
 
-<body>
-
-<header>
-
-    <div class="logo">
-        <img src="./image/mc 1.jpeg" alt="Masumi Creation Logo">
-    </div>
-
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="index.html#collections">Collections</a>
-        <a href="index.html#about">About</a>
-        <a href="index.html#contact">Contact</a>
-    </nav>
-
-</header>
-
-
-<section class="hero" id="home">
-
-    <div class="hero-text">
-
-        <h1>👗 Designer Blouse Collection</h1>
-
-        <p>
-            Discover elegant designer blouses made for weddings,
-            festivals, celebrations and special occasions.
-        </p>
-
-        <a href="#collections" class="btn">
-            Explore Blouses
-        </a>
-
-    </div>
-
-    <div class="hero-image">
-
-        <img
-            src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (2).jpeg"
-            alt="Designer Blouse">
-
-    </div>
-
-</section>
-
-
-<section class="highlight">
-
-    <h2>✨ Elegance In Every Detail ✨</h2>
-
-    <p>
-        Beautiful Designs • Premium Finish • Stylish Looks
-    </p>
-
-    <div class="highlight-items">
-
-        <div>
-            <h3>💎 Premium Quality</h3>
-        </div>
-
-        <div>
-            <h3>💖 Beautiful Designs</h3>
-        </div>
-
-        <div>
-            <h3>🚚 Affordable Prices</h3>
-        </div>
-
-    </div>
-
-</section>
-
-
-<section id="collections" class="collections">
-
-    <h2>👗 Designer Blouse Collection</h2>
-
-    <div class="products">
-
-
-        <div class="card">
-
-            <img
-                src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (2).jpeg"
-                alt="Designer Blouse">
-
-            <h3>Designer Blouse</h3>
-
-            <p>
-                Elegant ready-made designer blouse
-                for every special occasion.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <img
-                src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (3).jpeg"
-                alt="Mirror Work Blouse">
-
-            <h3>Mirror Work Blouse</h3>
-
-            <p>
-                Beautiful mirror work design with
-                premium finishing.
-            </p>
-
-        </div>
-
-
-        <div class="card">
-
-            <img
-                src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (2).jpeg"
-                alt="Festive Blouse">
-
-            <h3>Festive Blouse</h3>
-
-            <p>
-                Stylish blouse perfect for weddings,
-                festivals and celebrations.
-            </p>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<div style="text-align:center; padding:40px;">
-
-    <a href="index.html" class="btn">
-        ← Back to Home
-    </a>
-
-</div>
-
+<link rel="stylesheet" href="style.css">
 
 <style>
 
-.collections {
+.blouse-collection {
     padding: 70px 8%;
 }
 
-.collections h2 {
+.blouse-collection h2 {
     text-align: center;
     margin-bottom: 40px;
 }
 
-.products {
+.blouse-products {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    max-width: 850px;
+    margin: auto;
 }
 
-.products .card {
+.blouse-card {
     background: white;
     padding: 20px;
     border-radius: 18px;
@@ -185,46 +45,334 @@
     transition: 0.3s;
 }
 
-.products .card:hover {
+.blouse-card:hover {
     transform: translateY(-8px);
 }
 
-.products .card img {
+.blouse-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.blouse-card img {
     width: 100%;
-    height: 260px;
+    height: 380px;
     object-fit: cover;
     border-radius: 12px;
 }
 
-.products .card h3 {
+.blouse-card h3 {
     margin-top: 18px;
     margin-bottom: 10px;
 }
 
-.products .card p {
+.blouse-card p {
     color: #666;
     line-height: 1.6;
 }
 
-@media (max-width: 900px) {
-
-    .products {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
+.back-home {
+    text-align: center;
+    margin-top: 45px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 650px) {
 
-    .products {
+    .blouse-products {
         grid-template-columns: 1fr;
+    }
+
+    .blouse-card img {
+        height: 350px;
     }
 
 }
 
 </style>
 
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="logo">
+
+<img
+src="./image/mc 1.jpeg"
+alt="Masumi Creation Logo">
+
+</div>
+
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="index.html#collections">Collections</a>
+
+<a href="index.html#about">About</a>
+
+<a href="index.html#contact">Contact</a>
+
+
+<a
+href="javascript:void(0)"
+class="cart-icon"
+onclick="openCart()">
+
+🛒 Cart <span id="cart-count">0</span>
+
+</a>
+
+
+<a
+href="javascript:void(0)"
+class="cart-icon"
+onclick="openWishlist()">
+
+❤️ Wishlist <span id="wishlist-count">0</span>
+
+</a>
+
+</nav>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>Designer Blouse Collection</h1>
+
+<p>
+
+Discover our stylish collection of designer
+readymade blouses, perfect for weddings,
+festivals, parties and special occasions.
+
+</p>
+
+<a
+href="#collections"
+class="btn">
+
+Explore Blouses
+
+</a>
+
+</div>
+
+
+<div class="hero-image">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (2).jpeg"
+alt="Designer Blouse">
+
+</div>
+
+</section>
+
+
+
+<!-- ================= HIGHLIGHT ================= -->
+
+<section class="highlight">
+
+<h2>
+✨ Elegance In Every Stitch ✨
+</h2>
+
+<p>
+Designer Blouses • Stylish Designs • Affordable Prices
+</p>
+
+
+<div class="highlight-items">
+
+<div>
+<h3>💎 Premium Quality</h3>
+</div>
+
+<div>
+<h3>💖 Latest Designs</h3>
+</div>
+
+<div>
+<h3>🚚 Affordable Prices</h3>
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section
+id="collections"
+class="blouse-collection">
+
+<h2>
+👗 Designer Blouse Collection
+</h2>
+
+
+<div class="blouse-products">
+
+
+<!-- BLOUSE 1 -->
+
+<div class="blouse-card">
+
+<a href="blouse-product.html?product=1">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (2).jpeg"
+alt="Designer Blouse 01">
+
+<h3>
+Designer Blouse 01
+</h3>
+
+<p>
+Elegant designer blouse perfect for weddings,
+festivals and special occasions.
+</p>
+
+</a>
+
+</div>
+
+
+
+<!-- BLOUSE 2 -->
+
+<div class="blouse-card">
+
+<a href="blouse-product.html?product=2">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (3).jpeg"
+alt="Designer Blouse 02">
+
+<h3>
+Designer Blouse 02
+</h3>
+
+<p>
+Beautiful stylish blouse designed to complement
+your traditional and festive outfits.
+</p>
+
+</a>
+
+</div>
+
+
+</div>
+
+
+
+<div class="back-home">
+
+<a
+href="index.html"
+class="btn">
+
+← Back to Home
+
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= CART ================= -->
+
+<div
+id="cartPopup"
+class="cart-popup">
+
+<h2>
+🛒 Shopping Cart
+</h2>
+
+<div id="cartItems">
+
+<p>
+Your cart is empty.
+</p>
+
+</div>
+
+
+<button
+class="btn"
+onclick="checkoutWhatsApp()">
+
+✅ Checkout on WhatsApp
+
+</button>
+
+
+<button
+class="btn"
+onclick="closeCart()">
+
+Close
+
+</button>
+
+</div>
+
+
+
+<!-- ================= WISHLIST ================= -->
+
+<div
+id="wishlistPopup"
+class="cart-popup">
+
+<h2>
+❤️ Wishlist
+</h2>
+
+<div id="wishlistItems">
+
+<p>
+Your wishlist is empty.
+</p>
+
+</div>
+
+
+<button
+class="btn"
+onclick="closeWishlist()">
+
+Close
+
+</button>
+
+</div>
+
+
+
 <script src="script.js"></script>
 
 </body>
+
 </html>
