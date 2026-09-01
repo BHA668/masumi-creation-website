@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Masumi Creation | Anklet Collection</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap"
+rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+.anklet-collection {
+    padding: 70px 8%;
+}
+
+.anklet-collection h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.anklet-products {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 35px;
+    max-width: 900px;
+    margin: auto;
+}
+
+.anklet-card {
+    background: white;
+    padding: 20px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: 0.3s;
+}
+
+.anklet-card:hover {
+    transform: translateY(-8px);
+}
+
+.anklet-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.anklet-card img {
+    width: 100%;
+    height: 380px;
+    object-fit: cover;
+    border-radius: 12px;
+}
+
+.anklet-card h3 {
+    margin-top: 18px;
+    margin-bottom: 10px;
+}
+
+.anklet-card p {
+    color: #666;
+    line-height: 1.6;
+}
+
+.back-home {
+    text-align: center;
+    margin-top: 45px;
+}
+
+@media (max-width: 650px) {
+
+    .anklet-products {
+        grid-template-columns: 1fr;
+    }
+
+    .anklet-card img {
+        height: 350px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+<div class="logo">
+
+<img
+src="./image/mc 1.jpeg"
+alt="Masumi Creation Logo">
+
+</div>
+
+
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="index.html#collections">Collections</a>
+
+<a href="index.html#about">About</a>
+
+<a href="index.html#contact">Contact</a>
+
+
+<a
+href="javascript:void(0)"
+class="cart-icon"
+onclick="openCart()">
+
+🛒 Cart <span id="cart-count">0</span>
+
+</a>
+
+
+<a
+href="javascript:void(0)"
+class="cart-icon"
+onclick="openWishlist()">
+
+❤️ Wishlist <span id="wishlist-count">0</span>
+
+</a>
+
+</nav>
+
+</header>
+
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero">
+
+<div class="hero-text">
+
+<h1>Anklet Collection</h1>
+
+<p>
+
+Discover our stylish artificial anklets,
+perfect for weddings, festivals, parties
+and every special occasion.
+
+</p>
+
+<a
+href="#collections"
+class="btn">
+
+Explore Anklets
+
+</a>
+
+</div>
+
+
+<div class="hero-image">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.26 AM (3).jpeg"
+alt="Anklet Collection">
+
+</div>
+
+</section>
+
+
+
+<!-- ================= HIGHLIGHT ================= -->
+
+<section class="highlight">
+
+<h2>
+✨ Elegance That Shines With You ✨
+</h2>
+
+<p>
+Artificial Jewellery • Stylish Designs • Affordable Prices
+</p>
+
+
+<div class="highlight-items">
+
+<div>
+<h3>💎 Premium Quality</h3>
+</div>
+
+<div>
+<h3>💖 Latest Designs</h3>
+</div>
+
+<div>
+<h3>🚚 Affordable Prices</h3>
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= PRODUCTS ================= -->
+
+<section
+id="collections"
+class="anklet-collection">
+
+<h2>
+✨ Anklet Collection
+</h2>
+
+
+<div class="anklet-products">
+
+
+<!-- ANKLET 1 -->
+
+<div class="anklet-card">
+
+<a href="anklet-product.html?product=1">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.26 AM (3).jpeg"
+alt="Anklet 01">
+
+<h3>
+Anklet 01
+</h3>
+
+<p>
+Elegant anklet design suitable for
+festivals, celebrations and special occasions.
+</p>
+
+</a>
+
+</div>
+
+
+
+<!-- ANKLET 2 -->
+
+<div class="anklet-card">
+
+<a href="anklet-product.html?product=2">
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM.jpeg"
+alt="Anklet 02">
+
+<h3>
+Anklet 02
+</h3>
+
+<p>
+Beautiful stylish anklet designed to
+complement traditional outfits.
+</p>
+
+</a>
+
+</div>
+
+
+</div>
+
+
+
+<div class="back-home">
+
+<a
+href="index.html"
+class="btn">
+
+← Back to Home
+
+</a>
+
+</div>
+
+</section>
+
+
+
+<!-- ================= CART ================= -->
+
+<div
+id="cartPopup"
+class="cart-popup">
+
+<h2>
+🛒 Shopping Cart
+</h2>
+
+<div id="cartItems">
+
+<p>
+Your cart is empty.
+</p>
+
+</div>
+
+
+<button
+class="btn"
+onclick="checkoutWhatsApp()">
+
+✅ Checkout on WhatsApp
+
+</button>
+
+
+<button
+class="btn"
+onclick="closeCart()">
+
+Close
+
+</button>
+
+</div>
+
+
+
+<!-- ================= WISHLIST ================= -->
+
+<div
+id="wishlistPopup"
+class="cart-popup">
+
+<h2>
+❤️ Wishlist
+</h2>
+
+<div id="wishlistItems">
+
+<p>
+Your wishlist is empty.
+</p>
+
+</div>
+
+
+<button
+class="btn"
+onclick="closeWishlist()">
+
+Close
+
+</button>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
