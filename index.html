@@ -1,100 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Masumi Creation | Necklace Collection</title>
+<title>Masumi Creation | Artificial Jewellery & Cosmetics</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
+
 </head>
 
+
 <body>
+
 
 <header>
 
 <div class="logo">
+
 <img src="./image/mc 1.jpeg" alt="Masumi Creation Logo">
+
 </div>
+
 
 <nav>
 
 <a href="#home">Home</a>
+
 <a href="#collections">Collections</a>
+
 <a href="#about">About</a>
+
 <a href="#contact">Contact</a>
+
 
 <a href="javascript:void(0)" class="cart-icon" onclick="openCart()">
 
 🛒 Cart <span id="cart-count">0</span>
 
 </a>
+
+
 <a href="javascript:void(0)" class="cart-icon" onclick="openWishlist()">
+
 ❤️ Wishlist <span id="wishlist-count">0</span>
+
 </a>
+
 </nav>
 
 </header>
 
+
+
+<section id="home" class="hero">
+
+
 <div class="hero-text">
 
-    <h1>MASUMI CREATION</h1>
+<h1>MASUMI CREATION</h1>
 
-    <h2>Cosmetics & Artificial Jewellery</h2>
+<h2>Cosmetics & Artificial Jewellery</h2>
 
-    <div class="business-info">
-        <p>By <strong>Pravin Mehta</strong></p>
-        <p>Contact: <strong>7874216100</strong></p>
-    </div>
 
-    <a href="#collections" class="btn">
-        Explore Our Collections
-    </a>
+<div class="business-info">
+
+<p>By <strong>Pravin Mehta</strong></p>
+
+<p>Contact: <strong>7874216100</strong></p>
 
 </div>
 
+
+<a href="#collections" class="btn">
+
+Explore Our Collections
+
+</a>
+
+</div>
+
+
+
 <div class="hero-image">
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.22 AM.jpeg"
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.22 AM.jpeg"
 alt="Masumi Model">
 
 </div>
 
+
 </section>
+
+
+
 <section class="highlight">
+
 
 <h2>✨ Elegance That Shines With You ✨</h2>
 
+
 <p>
+
 Premium Artificial Jewellery • Watches • Hair Accessories • Designer Blouses
+
 </p>
+
 
 <div class="highlight-items">
 
+
 <div>
+
 <h3>💎 Premium Quality</h3>
+
 </div>
 
+
 <div>
+
 <h3>💖 Latest Designs</h3>
+
 </div>
+
 
 <div>
+
 <h3>🚚 Affordable Prices</h3>
-</div>
 
 </div>
+
+
+</div>
+
 
 </section>
 
+
+
 <section id="collections" class="collections">
 
+
 <h2>Featured Collections</h2>
+
 
 <input
 type="text"
@@ -102,364 +160,607 @@ id="searchBar"
 placeholder="🔍 Search products..."
 onkeyup="searchProducts()">
 
+
 <div class="products">
-  <div class="card product-card">
 
-    <span class="badge bestseller">🔥 BEST SELLER</span>
-
-    <a href="necklaces.html">
-
-        <img
-            src="image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
-            alt="Designer Necklace Set">
-
-        <h3>Designer Necklace Set</h3>
-
-        <p>
-            Elegant handcrafted jewellery for every celebration.
-        </p>
-
-    </a>
-
-    <div class="product-card-info">
-
-        <div class="rating">
-            ⭐⭐⭐⭐⭐
-        </div>
-
-        <p class="price">
-            💎 Price: Contact Us
-        </p>
-
-        <a href="designer-necklace.html" class="card-btn">
-            View Product
-        </a>
-
-    </div>
-
-</div>
 
 <div class="card product-card">
 
-    <span class="badge new">🆕 NEW</span>
 
-    <a href="hair-accessories.html" class="product-link">
+<span class="badge bestseller">🔥 BEST SELLER</span>
 
-        <img
-            src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg"
-            alt="Crystal Hair Clips">
-
-        <h3>Crystal Hair Clips</h3>
-
-        <p>
-            Premium quality stylish hair accessories.
-        </p>
-
-    </a>
-
-    <div class="product-card-info">
-
-        <div class="rating">
-            ⭐⭐⭐⭐⭐
-        </div>
-
-        <p class="price">
-            💎 Price: Contact Us
-        </p>
-
-        <a href="hair-accessories.html" class="card-btn">
-            View Product
-        </a>
-
-    </div>
-
-</div>
-
-<div class="card product-card">
-
-    <a href="hair-accessories.html" class="product-link">
-
-        <img
-            src="image/WhatsApp Image 2026-07-21 at 10.17.22 AM (1).jpeg"
-            alt="Hair Claw Collection">
-
-        <h3>Hair Claw Collection</h3>
-
-        <p>
-            Beautiful colours with a strong and comfortable grip.
-        </p>
-
-    </a>
-
-    <div class="product-card-info">
-
-        <div class="rating">⭐⭐⭐⭐⭐</div>
-
-        <p class="price">💎 Price: Contact Us</p>
-
-        <a href="hair-accessories.html" class="card-btn">
-            View Product
-        </a>
-
-    </div>
-
-</div>
-
-<div class="card product-card">
-
-    <a href="earrings.html" class="product-link">
-
-        <img
-            src="image/WhatsApp Image 2026-07-21 at 10.17.24 AM (1).jpeg"
-            alt="Traditional Earrings">
-
-        <h3>Traditional Earrings</h3>
-
-        <p>
-            Classic ethnic earrings perfect for festive occasions.
-        </p>
-
-    </a>
-
-    <div class="product-card-info">
-
-        <div class="rating">
-            ⭐⭐⭐⭐⭐
-        </div>
-
-        <p class="price">
-            💎 Price: Contact Us
-        </p>
-
-       <a href="earrings.html" class="card-btn">
-            View Product
-        </a>
-
-    </div>
-
-</div>
-
-<div class="card product-card">
-
-    <a href="watches.html" class="product-link">
-
-        <img
-            src="image/WhatsApp Image 2026-07-21 at 10.17.25 AM (2).jpeg"
-            alt="Ladies Watches">
-
-        <h3>Ladies Watches</h3>
-
-        <p>
-            Elegant watches that complete your everyday look.
-        </p>
-
-    </a>
-
-    <div class="product-card-info">
-
-        <div class="rating">
-            ⭐⭐⭐⭐⭐
-        </div>
-
-        <p class="price">
-            💎 Price: Contact Us
-        </p>
-
-        <a href="watches.html" class="card-btn">
-            View Product
-        </a>
-
-    </div>
-
-</div>
-<div class="card product-card">
-
-    <a href="blouses.html" class="product-link">
-
-        <img
-            src="image/WhatsApp Image 2026-07-21 at 10.17.27 AM (2).jpeg"
-            alt="Designer Blouse">
-
-        <h3>Designer Blouse</h3>
-
-        <p>
-            Beautiful ready-made blouse for festive and traditional occasions.
-        </p>
-
-    </a>
-
-    <div class="product-card-info">
-
-        <div class="rating">
-            ⭐⭐⭐⭐⭐
-        </div>
-
-        <p class="price">
-            💎 Price: Contact Us
-        </p>
-
-        <a href="blouses.html" class="card-btn">
-            View Product
-        </a>
-
-    </div>
-
-</div>
-</div>
-
-</section>
-<section class="categories">
-
-<h2>Shop By Category</h2>
-
-<div class="category-grid">
-
-<div class="category-box">
 
 <a href="necklaces.html">
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg" alt="Necklaces">
 
-<h3>Necklaces</h3>
+<img
+src="image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
+alt="Designer Necklace Set">
 
-</a>
 
-</div>
+<h3>Designer Necklace Set</h3>
 
-<div class="category-box">
 
-<a href="earrings.html">
+<p>
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.24 AM (1).jpeg" alt="Earrings">
+Elegant handcrafted jewellery for every celebration.
 
-<h3>Earrings</h3>
+</p>
 
-</a>
-
-</div>
-
-<div class="category-box">
-
-<a href="hair-accessories.html">
-
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg" alt="Hair Accessories">
-
-<h3>Hair Accessories</h3>
 
 </a>
 
+
+<div class="product-card-info">
+
+
+<div class="rating">
+
+⭐⭐⭐⭐⭐
+
 </div>
 
-<div class="category-box">
 
-<a href="watches.html">
+<p class="price">
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (2).jpeg" alt="Watches">
+💎 Price: Contact Us
 
-<h3>Watches</h3>
+</p>
+
+
+<a href="designer-necklace.html" class="card-btn">
+
+View Product
 
 </a>
 
+
 </div>
 
-<div class="category-box">
 
-<a href="blouses.html">
+</div>
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (2).jpeg" alt="Blouses">
 
-<h3>Blouses</h3>
+
+<div class="card product-card">
+
+
+<span class="badge new">🆕 NEW</span>
+
+
+<a href="hair-accessories.html" class="product-link">
+
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg"
+alt="Crystal Hair Clips">
+
+
+<h3>Crystal Hair Clips</h3>
+
+
+<p>
+
+Premium quality stylish hair accessories.
+
+</p>
+
 
 </a>
 
+
+<div class="product-card-info">
+
+
+<div class="rating">
+
+⭐⭐⭐⭐⭐
+
 </div>
 
-<div class="category-box">
 
-<a href="anklets.html">
+<p class="price">
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.26 AM (3).jpeg" alt="Anklets">
+💎 Price: Contact Us
 
-<h3>Anklets</h3>
+</p>
+
+
+<a href="hair-accessories.html" class="card-btn">
+
+View Product
 
 </a>
 
-</div>
 
 </div>
+
+
+</div>
+
+
+
+<div class="card product-card">
+
+
+<a href="hair-accessories.html" class="product-link">
+
+
+<img
+src="image/WhatsApp Image 2026-07-21 at 10.17.22 AM (1).jpeg"
+alt="Hair Claw Collection">
+
+
+<h3>Hair Claw Collection</h3>
+
+
+<p>
+
+Beautiful colours with a strong and comfortable grip.
+
+</p>
+
+
+</a>
+
+
+<div class="product-card-info">
+
+
+<div class="rating">
+
+⭐⭐⭐⭐⭐
+
+</div>
+
+
+<p class="price">
+
+💎 Price: Contact Us
+
+</p>
+
+
+<a href="hair-accessories.html" class="card-btn">
+
+View Product
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="card product-card">
+
+
+<a href="earrings.html" class="product-link">
+
+
+<img
+src="image/WhatsApp Image 2026-07-21 at 10.17.24 AM (1).jpeg"
+alt="Traditional Earrings">
+
+
+<h3>Traditional Earrings</h3>
+
+
+<p>
+
+Classic ethnic earrings perfect for festive occasions.
+
+</p>
+
+
+</a>
+
+
+<div class="product-card-info">
+
+
+<div class="rating">
+
+⭐⭐⭐⭐⭐
+
+</div>
+
+
+<p class="price">
+
+💎 Price: Contact Us
+
+</p>
+
+
+<a href="earrings.html" class="card-btn">
+
+View Product
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="card product-card">
+
+
+<a href="watches.html" class="product-link">
+
+
+<img
+src="image/WhatsApp Image 2026-07-21 at 10.17.25 AM (2).jpeg"
+alt="Ladies Watches">
+
+
+<h3>Ladies Watches</h3>
+
+
+<p>
+
+Elegant watches that complete your everyday look.
+
+</p>
+
+
+</a>
+
+
+<div class="product-card-info">
+
+
+<div class="rating">
+
+⭐⭐⭐⭐⭐
+
+</div>
+
+
+<p class="price">
+
+💎 Price: Contact Us
+
+</p>
+
+
+<a href="watches.html" class="card-btn">
+
+View Product
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+
+<div class="card product-card">
+
+
+<a href="blouses.html" class="product-link">
+
+
+<img
+src="image/WhatsApp Image 2026-07-21 at 10.17.27 AM (2).jpeg"
+alt="Designer Blouse">
+
+
+<h3>Designer Blouse</h3>
+
+
+<p>
+
+Beautiful ready-made blouse for festive and traditional occasions.
+
+</p>
+
+
+</a>
+
+
+<div class="product-card-info">
+
+
+<div class="rating">
+
+⭐⭐⭐⭐⭐
+
+</div>
+
+
+<p class="price">
+
+💎 Price: Contact Us
+
+</p>
+
+
+<a href="blouses.html" class="card-btn">
+
+View Product
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
 
 </section>
 
+
+
+<section class="categories">
+
+
+<h2>Shop By Category</h2>
+
+
+<div class="category-grid">
+
+
+<div class="category-box">
+
+
+<a href="necklaces.html">
+
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
+alt="Necklaces">
+
+
+<h3>Necklaces</h3>
+
+
+</a>
+
+
+</div>
+
+
+
+<div class="category-box">
+
+
+<a href="earrings.html">
+
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.24 AM (1).jpeg"
+alt="Earrings">
+
+
+<h3>Earrings</h3>
+
+
+</a>
+
+
+</div>
+
+
+
+<div class="category-box">
+
+
+<a href="hair-accessories.html">
+
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg"
+alt="Hair Accessories">
+
+
+<h3>Hair Accessories</h3>
+
+
+</a>
+
+
+</div>
+
+
+
+<div class="category-box">
+
+
+<a href="watches.html">
+
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (2).jpeg"
+alt="Watches">
+
+
+<h3>Watches</h3>
+
+
+</a>
+
+
+</div>
+
+
+
+<div class="category-box">
+
+
+<a href="blouses.html">
+
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (2).jpeg"
+alt="Blouses">
+
+
+<h3>Blouses</h3>
+
+
+</a>
+
+
+</div>
+
+
+
+<div class="category-box">
+
+
+<a href="anklets.html">
+
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.26 AM (3).jpeg"
+alt="Anklets">
+
+
+<h3>Anklets</h3>
+
+
+</a>
+
+
+</div>
+
+
+</div>
+
+
+</section>
+
+
+
 <section id="about" class="about">
+
 
 <h2>About Masumi Creation</h2>
 
+
 <p>
+
 Masumi Creation brings together elegant artificial jewellery,
 fashion accessories, watches, hair accessories, bangles,
 necklaces, earrings and much more.
 
+
 Our goal is to provide premium quality products at affordable
 prices while helping every customer look stylish for every
 occasion.
+
 </p>
 
+
 </section>
+
+
+
 <section class="reviews">
+
 
 <h2>What Our Customers Say ❤️</h2>
 
+
 <div class="review-container">
+
 
 <div class="review-card">
 
+
 ⭐⭐⭐⭐⭐
 
+
 <p>
+
 "Beautiful jewellery with excellent quality.
 Highly recommended!"
+
 </p>
+
 
 <h4>— Priya Patel</h4>
 
+
 </div>
+
+
 
 <div class="review-card">
 
+
 ⭐⭐⭐⭐⭐
 
+
 <p>
+
 "Very stylish collection.
 I loved the necklace and earrings."
+
 </p>
+
 
 <h4>— Riya Shah</h4>
 
+
 </div>
+
+
 
 <div class="review-card">
 
+
 ⭐⭐⭐⭐⭐
 
+
 <p>
+
 "Affordable prices and premium quality.
 Will definitely buy again!"
+
 </p>
+
 
 <h4>— Neha Verma</h4>
 
-</div>
 
 </div>
+
+
+</div>
+
 
 </section>
+
+
+
 <section class="location">
+
 
 <h2>📍 Visit Our Store</h2>
 
+
 <p>
+
 Regent Residency, Near Pratham Circle, Surat
+
 </p>
+
 
 <iframe
 src="https://www.google.com/maps?q=Regent+Residency+Pratham+Circle+Surat&output=embed"
@@ -468,144 +769,288 @@ height="400"
 style="border:0;border-radius:15px;"
 allowfullscreen=""
 loading="lazy">
+
 </iframe>
 
+
 </section>
+
+
+
 <section class="instagram">
+
 
 <h2>📸 Follow Us on Instagram</h2>
 
-<p>See our latest jewellery collections and daily updates.</p>
+
+<p>
+
+See our latest jewellery collections and daily updates.
+
+</p>
+
 
 <div class="insta-gallery">
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg" alt="Instagram 1">
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.24 AM (1).jpeg" alt="Instagram 2">
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.27 AM (1).jpeg"
+alt="Instagram 1">
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg" alt="Instagram 3">
 
-<img src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (2).jpeg" alt="Instagram 4">
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.24 AM (1).jpeg"
+alt="Instagram 2">
+
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg"
+alt="Instagram 3">
+
+
+<img
+src="./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (2).jpeg"
+alt="Instagram 4">
+
 
 </div>
 
-<a href="https://instagram.com/" target="_blank" class="btn">
+
+<a
+href="https://instagram.com/"
+target="_blank"
+class="btn">
 
 📷 Follow on Instagram
 
 </a>
 
+
 </section>
+
+
 
 <section id="contact" class="contact">
 
+
 <h2>Contact Us</h2>
 
-<p><strong>📍 Address:</strong> Regent Residency, Near Pratham Circle, Surat</p>
 
-<p><strong>📞 WhatsApp:</strong> +91 XXXXXXXXXX</p>
+<p>
 
-<p><strong>📧 Email:</strong> masumicreation@gmail.com</p>
+<strong>📍 Address:</strong>
+Regent Residency, Near Pratham Circle, Surat
 
-<a href="https://wa.me/91XXXXXXXXXX" class="btn">Chat on WhatsApp</a>
+</p>
+
+
+<p>
+
+<strong>📞 WhatsApp:</strong>
++91 7874216100
+
+</p>
+
+
+<p>
+
+<strong>📧 Email:</strong>
+masumicreation@gmail.com
+
+</p>
+
+
+<a
+href="https://wa.me/917874216100"
+class="btn">
+
+Chat on WhatsApp
+
+</a>
+
 
 </section>
 
+
+
 <footer>
 
-<p>© 2026 Masumi Creation. All Rights Reserved.</p>
 
-<p>Designed with ❤️ by Bhavya</p>
+<p>
+
+© 2026 Masumi Creation. All Rights Reserved.
+
+</p>
+
+
+<p>
+
+Designed with ❤️ by Bhavya
+
+</p>
+
 
 </footer>
 
-<a href="https://wa.me/917874216100"
+
+
+<a
+href="https://wa.me/917874216100"
 class="whatsapp"
 target="_blank">
 
 💬
 
 </a>
+
+
+
 <div id="cartPopup" class="cart-popup">
+
 
 <h2>🛒 Shopping Cart</h2>
 
+
 <div id="cartItems"></div>
 
-<button class="btn" onclick="checkoutWhatsApp()">
+
+<button
+class="btn"
+onclick="checkoutWhatsApp()">
+
 ✅ Checkout on WhatsApp
+
 </button>
 
-<button class="btn" onclick="closeCart()">
+
+<button
+class="btn"
+onclick="closeCart()">
 
 Close
 
 </button>
 
+
 </div>
+
+
+
 <div id="wishlistPopup" class="cart-popup">
+
 
 <h2>❤️ Wishlist</h2>
 
+
 <div id="wishlistItems">
+
 
 <p>Your wishlist is empty.</p>
 
+
 </div>
 
-<button class="btn" onclick="closeWishlist()">
+
+<button
+class="btn"
+onclick="closeWishlist()">
+
 Close
+
 </button>
 
+
 </div>
+
+
+
 <div id="imageModal" class="image-modal">
 
-<span class="close" onclick="closeImage()">&times;</span>
+
+<span
+class="close"
+onclick="closeImage()">
+
+&times;
+
+</span>
+
 
 <img id="zoomedImage">
 
+
 </div>
+
+
+
 <script>
 
+
 function changeImage(image){
-    document.getElementById("mainImage").src = image;
+
+document.getElementById("mainImage").src = image;
+
 }
+
+
 
 function searchProducts(){
 
-    let input = document.getElementById("searchBar").value.toLowerCase();
+let input =
+document.getElementById("searchBar").value.toLowerCase();
 
-    let cards = document.querySelectorAll(".product-card");
 
-    cards.forEach(function(card){
+let cards =
+document.querySelectorAll(".product-card");
 
-        let text = card.innerText.toLowerCase();
 
-        if(text.includes(input)){
-            card.style.display = "block";
-        }else{
-            card.style.display = "none";
-        }
+cards.forEach(function(card){
 
-    });
+let text =
+card.innerText.toLowerCase();
+
+
+if(text.includes(input)){
+
+card.style.display = "block";
+
+}else{
+
+card.style.display = "none";
 
 }
+
+});
+
+}
+
+
+
 function openImage(image){
 
 document.getElementById("imageModal").style.display="flex";
 
+
 document.getElementById("zoomedImage").src=image;
 
 }
+
+
 
 function closeImage(){
 
 document.getElementById("imageModal").style.display="none";
 
 }
+
+
 </script>
+
+
 
 <script src="script.js"></script>
 
+
 </body>
+
 </html>
