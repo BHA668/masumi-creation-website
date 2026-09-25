@@ -1,0 +1,1364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Masumi Creation | Admin Panel</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Poppins", sans-serif;
+            background: #f8f5f0;
+            color: #333;
+        }
+
+        button,
+        input,
+        select,
+        textarea {
+            font-family: inherit;
+        }
+
+        /* =========================
+           LOGIN SCREEN
+        ========================= */
+
+        #loginScreen {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            background:
+                linear-gradient(
+                    rgba(255,255,255,0.92),
+                    rgba(255,255,255,0.92)
+                ),
+                #f8f5f0;
+        }
+
+        .login-box {
+            width: 100%;
+            max-width: 430px;
+            background: white;
+            padding: 40px 32px;
+            border-radius: 18px;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.10);
+            text-align: center;
+        }
+
+        .login-logo {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            border-radius: 50%;
+            margin-bottom: 18px;
+        }
+
+        .login-box h1 {
+            font-family: "Cinzel", serif;
+            color: #7a1f2b;
+            font-size: 28px;
+            margin-bottom: 6px;
+        }
+
+        .login-box .subtitle {
+            color: #777;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 18px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 7px;
+            color: #444;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 13px 14px;
+            border: 1px solid #ddd;
+            border-radius: 9px;
+            outline: none;
+            font-size: 14px;
+            transition: 0.2s;
+        }
+
+        .input-group input:focus {
+            border-color: #b88a44;
+            box-shadow: 0 0 0 3px rgba(184,138,68,0.12);
+        }
+
+        .login-btn {
+            width: 100%;
+            border: none;
+            padding: 14px;
+            border-radius: 9px;
+            background: #7a1f2b;
+            color: white;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .login-btn:hover {
+            background: #641722;
+        }
+
+        .login-note {
+            margin-top: 18px;
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* =========================
+           ADMIN PANEL
+        ========================= */
+
+        #adminPanel {
+            display: none;
+            min-height: 100vh;
+        }
+
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar {
+            width: 250px;
+            background: #7a1f2b;
+            color: white;
+            padding: 25px 18px;
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            overflow-y: auto;
+        }
+
+        .brand {
+            text-align: center;
+            padding-bottom: 25px;
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            margin-bottom: 22px;
+        }
+
+        .brand img {
+            width: 65px;
+            height: 65px;
+            object-fit: contain;
+            border-radius: 50%;
+            margin-bottom: 10px;
+        }
+
+        .brand h2 {
+            font-family: "Cinzel", serif;
+            font-size: 17px;
+            letter-spacing: 1px;
+        }
+
+        .brand p {
+            font-size: 11px;
+            opacity: 0.75;
+            margin-top: 3px;
+        }
+
+        .menu-title {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            opacity: 0.55;
+            margin: 20px 10px 10px;
+        }
+
+        .menu-btn {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 13px;
+            margin-bottom: 5px;
+            border: none;
+            border-radius: 8px;
+            background: transparent;
+            color: white;
+            cursor: pointer;
+            text-align: left;
+            font-size: 13px;
+            transition: 0.2s;
+        }
+
+        .menu-btn:hover,
+        .menu-btn.active {
+            background: rgba(255,255,255,0.12);
+        }
+
+        .menu-icon {
+            width: 22px;
+            text-align: center;
+            font-size: 16px;
+        }
+
+        .logout-btn {
+            margin-top: 30px;
+            border: 1px solid rgba(255,255,255,0.25);
+        }
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .main-content {
+            margin-left: 250px;
+            width: calc(100% - 250px);
+            min-height: 100vh;
+        }
+
+        .topbar {
+            height: 75px;
+            background: white;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 30px;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .topbar h1 {
+            font-family: "Cinzel", serif;
+            font-size: 22px;
+            color: #7a1f2b;
+        }
+
+        .admin-user {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            color: #666;
+        }
+
+        .admin-avatar {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #f0dfba;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #7a1f2b;
+            font-weight: 700;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .welcome {
+            margin-bottom: 25px;
+        }
+
+        .welcome h2 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .welcome p {
+            color: #888;
+            font-size: 13px;
+        }
+
+        /* =========================
+           STAT CARDS
+        ========================= */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 13px;
+            border: 1px solid #eee;
+        }
+
+        .stat-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+
+        .stat-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: #f8eee2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+        }
+
+        .stat-label {
+            color: #888;
+            font-size: 12px;
+        }
+
+        .stat-number {
+            font-size: 26px;
+            font-weight: 700;
+            color: #333;
+        }
+
+        /* =========================
+           QUICK ACTIONS
+        ========================= */
+
+        .section-title {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #444;
+        }
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            margin-bottom: 30px;
+        }
+
+        .action-card {
+            background: white;
+            border: 1px solid #eee;
+            border-radius: 13px;
+            padding: 22px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .action-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+        }
+
+        .action-card .icon {
+            font-size: 25px;
+            margin-bottom: 12px;
+        }
+
+        .action-card h3 {
+            font-size: 15px;
+            margin-bottom: 5px;
+        }
+
+        .action-card p {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* =========================
+           ADD PRODUCT FORM
+        ========================= */
+
+        .panel {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            border: 1px solid #eee;
+            padding: 25px;
+        }
+
+        .panel.active {
+            display: block;
+        }
+
+        .panel-header {
+            margin-bottom: 22px;
+        }
+
+        .panel-header h2 {
+            color: #7a1f2b;
+            font-size: 20px;
+        }
+
+        .panel-header p {
+            color: #888;
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 18px;
+        }
+
+        .form-group {
+            margin-bottom: 4px;
+        }
+
+        .form-group.full {
+            grid-column: 1 / -1;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 7px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 12px;
+            outline: none;
+            font-size: 13px;
+        }
+
+        .form-group textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            border-color: #b88a44;
+        }
+
+        .save-product-btn {
+            margin-top: 20px;
+            border: none;
+            padding: 13px 25px;
+            background: #7a1f2b;
+            color: white;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        .mobile-menu {
+            display: none;
+            border: none;
+            background: none;
+            font-size: 24px;
+            color: #7a1f2b;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1000px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 700px) {
+
+            .sidebar {
+                transform: translateX(-100%);
+                transition: 0.25s;
+                z-index: 100;
+            }
+
+            .sidebar.open {
+                transform: translateX(0);
+            }
+
+            .main-content {
+                margin-left: 0;
+                width: 100%;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .topbar {
+                padding: 0 18px;
+            }
+
+            .topbar h1 {
+                font-size: 17px;
+            }
+
+            .content {
+                padding: 20px 15px;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 15px;
+            }
+
+            .stat-number {
+                font-size: 22px;
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group.full {
+                grid-column: auto;
+            }
+
+            .admin-user span {
+                display: none;
+            }
+        }
+
+        @media (max-width: 450px) {
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .login-box {
+                padding: 30px 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================
+         LOGIN SCREEN
+    ========================= -->
+
+    <div id="loginScreen">
+
+        <div class="login-box">
+
+            <img
+                src="./image/mc 1.jpeg"
+                alt="Masumi Creation"
+                class="login-logo"
+            >
+
+            <h1>MASUMI CREATION</h1>
+
+            <p class="subtitle">
+                Admin Panel
+            </p>
+
+            <form onsubmit="showDashboard(event)">
+
+                <div class="input-group">
+                    <label>Email</label>
+                    <input
+                        type="email"
+                        id="adminEmail"
+                        placeholder="Enter admin email"
+                        required
+                    >
+                </div>
+
+                <div class="input-group">
+                    <label>Password</label>
+                    <input
+                        type="password"
+                        id="adminPassword"
+                        placeholder="Enter password"
+                        required
+                    >
+                </div>
+
+                <button class="login-btn" type="submit">
+                    Login
+                </button>
+
+            </form>
+
+            <p class="login-note">
+                Secure admin authentication will be connected in the next step.
+            </p>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ADMIN PANEL
+    ========================= -->
+
+    <div id="adminPanel">
+
+        <div class="admin-layout">
+
+            <!-- SIDEBAR -->
+
+            <aside class="sidebar" id="sidebar">
+
+                <div class="brand">
+
+                    <img
+                        src="./image/mc 1.jpeg"
+                        alt="Masumi Creation"
+                    >
+
+                    <h2>MASUMI CREATION</h2>
+
+                    <p>ADMIN PANEL</p>
+
+                </div>
+
+
+                <div class="menu-title">
+                    Dashboard
+                </div>
+
+                <button
+                    class="menu-btn active"
+                    onclick="showPanel('dashboardPanel', this)"
+                >
+                    <span class="menu-icon">📊</span>
+                    Dashboard
+                </button>
+
+
+                <div class="menu-title">
+                    Products
+                </div>
+
+                <button
+                    class="menu-btn"
+                    onclick="showPanel('addProductPanel', this)"
+                >
+                    <span class="menu-icon">➕</span>
+                    Add Product
+                </button>
+
+                <button
+                    class="menu-btn"
+                    onclick="showPanel('productsPanel', this)"
+                >
+                    <span class="menu-icon">🛍️</span>
+                    Products
+                </button>
+
+
+                <div class="menu-title">
+                    Store
+                </div>
+
+                <button
+                    class="menu-btn"
+                    onclick="showPanel('ordersPanel', this)"
+                >
+                    <span class="menu-icon">📦</span>
+                    Orders
+                </button>
+
+                <button
+                    class="menu-btn"
+                    onclick="showPanel('wishlistPanel', this)"
+                >
+                    <span class="menu-icon">❤️</span>
+                    Wishlist
+                </button>
+
+
+                <button
+                    class="menu-btn logout-btn"
+                    onclick="logout()"
+                >
+                    <span class="menu-icon">🚪</span>
+                    Logout
+                </button>
+
+            </aside>
+
+
+            <!-- MAIN -->
+
+            <main class="main-content">
+
+                <header class="topbar">
+
+                    <button
+                        class="mobile-menu"
+                        onclick="toggleSidebar()"
+                    >
+                        ☰
+                    </button>
+
+                    <h1>Admin Dashboard</h1>
+
+                    <div class="admin-user">
+
+                        <div class="admin-avatar">
+                            A
+                        </div>
+
+                        <span>Administrator</span>
+
+                    </div>
+
+                </header>
+
+
+                <div class="content">
+
+
+                    <!-- DASHBOARD -->
+
+                    <section
+                        id="dashboardPanel"
+                        class="panel active"
+                    >
+
+                        <div class="welcome">
+
+                            <h2>Welcome to Masumi Creation 👋</h2>
+
+                            <p>
+                                Manage your products and store from one place.
+                            </p>
+
+                        </div>
+
+
+                        <div class="stats-grid">
+
+                            <div class="stat-card">
+
+                                <div class="stat-top">
+
+                                    <span class="stat-label">
+                                        Total Products
+                                    </span>
+
+                                    <div class="stat-icon">
+                                        🛍️
+                                    </div>
+
+                                </div>
+
+                                <div class="stat-number">
+                                    0
+                                </div>
+
+                            </div>
+
+
+                            <div class="stat-card">
+
+                                <div class="stat-top">
+
+                                    <span class="stat-label">
+                                        Orders
+                                    </span>
+
+                                    <div class="stat-icon">
+                                        📦
+                                    </div>
+
+                                </div>
+
+                                <div class="stat-number">
+                                    0
+                                </div>
+
+                            </div>
+
+
+                            <div class="stat-card">
+
+                                <div class="stat-top">
+
+                                    <span class="stat-label">
+                                        Wishlist
+                                    </span>
+
+                                    <div class="stat-icon">
+                                        ❤️
+                                    </div>
+
+                                </div>
+
+                                <div class="stat-number">
+                                    0
+                                </div>
+
+                            </div>
+
+
+                            <div class="stat-card">
+
+                                <div class="stat-top">
+
+                                    <span class="stat-label">
+                                        Categories
+                                    </span>
+
+                                    <div class="stat-icon">
+                                        📂
+                                    </div>
+
+                                </div>
+
+                                <div class="stat-number">
+                                    7
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <h2 class="section-title">
+                            Quick Actions
+                        </h2>
+
+
+                        <div class="quick-actions">
+
+                            <div
+                                class="action-card"
+                                onclick="showPanelById('addProductPanel')"
+                            >
+
+                                <div class="icon">
+                                    ➕
+                                </div>
+
+                                <h3>
+                                    Add New Product
+                                </h3>
+
+                                <p>
+                                    Add jewellery, cosmetics or accessories.
+                                </p>
+
+                            </div>
+
+
+                            <div
+                                class="action-card"
+                                onclick="showPanelById('productsPanel')"
+                            >
+
+                                <div class="icon">
+                                    🛍️
+                                </div>
+
+                                <h3>
+                                    Manage Products
+                                </h3>
+
+                                <p>
+                                    View, edit or delete products.
+                                </p>
+
+                            </div>
+
+
+                            <div
+                                class="action-card"
+                                onclick="showPanelById('ordersPanel')"
+                            >
+
+                                <div class="icon">
+                                    📦
+                                </div>
+
+                                <h3>
+                                    View Orders
+                                </h3>
+
+                                <p>
+                                    Manage customer orders.
+                                </p>
+
+                            </div>
+
+                        </div>
+
+                    </section>
+
+
+                    <!-- ADD PRODUCT -->
+
+                    <section
+                        id="addProductPanel"
+                        class="panel"
+                    >
+
+                        <div class="panel-header">
+
+                            <h2>
+                                Add New Product
+                            </h2>
+
+                            <p>
+                                Add a new product to your Masumi Creation store.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-grid">
+
+                            <div class="form-group">
+
+                                <label>
+                                    Product Name
+                                </label>
+
+                                <input
+                                    type="text"
+                                    placeholder="Example: Golden Pearl Necklace"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Category
+                                </label>
+
+                                <select>
+
+                                    <option value="">
+                                        Select Category
+                                    </option>
+
+                                    <option>
+                                        Necklaces
+                                    </option>
+
+                                    <option>
+                                        Earrings
+                                    </option>
+
+                                    <option>
+                                        Hair Accessories
+                                    </option>
+
+                                    <option>
+                                        Watches
+                                    </option>
+
+                                    <option>
+                                        Blouses
+                                    </option>
+
+                                    <option>
+                                        Anklets
+                                    </option>
+
+                                    <option>
+                                        Cosmetics
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Price
+                                </label>
+
+                                <input
+                                    type="number"
+                                    placeholder="Enter price"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group">
+
+                                <label>
+                                    Product Badge
+                                </label>
+
+                                <select>
+
+                                    <option>
+                                        No Badge
+                                    </option>
+
+                                    <option>
+                                        BEST SELLER
+                                    </option>
+
+                                    <option>
+                                        NEW
+                                    </option>
+
+                                    <option>
+                                        FEATURED
+                                    </option>
+
+                                </select>
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label>
+                                    Product Image
+                                </label>
+
+                                <input
+                                    type="file"
+                                    accept="image/*"
+                                >
+
+                            </div>
+
+
+                            <div class="form-group full">
+
+                                <label>
+                                    Product Description
+                                </label>
+
+                                <textarea
+                                    placeholder="Enter product description..."
+                                ></textarea>
+
+                            </div>
+
+                        </div>
+
+
+                        <button
+                            class="save-product-btn"
+                            onclick="saveProduct()"
+                        >
+                            Save Product
+                        </button>
+
+                    </section>
+
+
+                    <!-- PRODUCTS -->
+
+                    <section
+                        id="productsPanel"
+                        class="panel"
+                    >
+
+                        <div class="panel-header">
+
+                            <h2>
+                                Products
+                            </h2>
+
+                            <p>
+                                Your products will appear here after connecting the database.
+                            </p>
+
+                        </div>
+
+                        <p style="color:#888;font-size:13px;">
+                            No products loaded yet.
+                        </p>
+
+                    </section>
+
+
+                    <!-- ORDERS -->
+
+                    <section
+                        id="ordersPanel"
+                        class="panel"
+                    >
+
+                        <div class="panel-header">
+
+                            <h2>
+                                Orders
+                            </h2>
+
+                            <p>
+                                Customer orders will appear here.
+                            </p>
+
+                        </div>
+
+                        <p style="color:#888;font-size:13px;">
+                            No orders yet.
+                        </p>
+
+                    </section>
+
+
+                    <!-- WISHLIST -->
+
+                    <section
+                        id="wishlistPanel"
+                        class="panel"
+                    >
+
+                        <div class="panel-header">
+
+                            <h2>
+                                Wishlist
+                            </h2>
+
+                            <p>
+                                Wishlist information will appear here.
+                            </p>
+
+                        </div>
+
+                        <p style="color:#888;font-size:13px;">
+                            Wishlist management will be connected later.
+                        </p>
+
+                    </section>
+
+
+                </div>
+
+            </main>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================= -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script>
+    const SUPABASE_URL = "https://nipzghcilyhowudosabm.supabase.co";
+    const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HIGQwrRY5Ssz-DMhCbC3EQ_waher5Hn";
+
+    const supabaseClient = supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+    );
+</script>
+    <script>
+
+        async function showDashboard(event) {
+
+    event.preventDefault();
+
+    const email = document.getElementById("adminEmail").value.trim();
+    const password = document.getElementById("adminPassword").value;
+
+    const { data, error } = await supabaseClient.auth.signInWithPassword({
+        email: email,
+        password: password
+    });
+
+    if (error) {
+        alert("Login failed: " + error.message);
+        return;
+    }
+
+    document.getElementById("loginScreen").style.display = "none";
+    document.getElementById("adminPanel").style.display = "block";
+
+}
+
+        function logout() {
+
+            document.getElementById("adminPanel").style.display = "none";
+
+            document.getElementById("loginScreen").style.display = "flex";
+
+        }
+
+
+        function showPanel(panelId, button) {
+
+            const panels = document.querySelectorAll(".panel");
+
+            panels.forEach(function(panel) {
+                panel.classList.remove("active");
+            });
+
+
+            document.getElementById(panelId).classList.add("active");
+
+
+            const buttons = document.querySelectorAll(".menu-btn");
+
+            buttons.forEach(function(btn) {
+                btn.classList.remove("active");
+            });
+
+
+            if (button) {
+                button.classList.add("active");
+            }
+
+
+            document.getElementById("sidebar").classList.remove("open");
+
+        }
+
+
+        function showPanelById(panelId) {
+
+            const panels = document.querySelectorAll(".panel");
+
+            panels.forEach(function(panel) {
+                panel.classList.remove("active");
+            });
+
+
+            document.getElementById(panelId).classList.add("active");
+
+
+            const buttons = document.querySelectorAll(".menu-btn");
+
+            buttons.forEach(function(btn) {
+                btn.classList.remove("active");
+            });
+
+
+            document.getElementById("sidebar").classList.remove("open");
+
+        }
+
+
+        function toggleSidebar() {
+
+            document
+                .getElementById("sidebar")
+                .classList.toggle("open");
+
+        }
+
+
+     async function saveProduct() {
+
+    const name = document.querySelector('input[placeholder="Enter product name..."]').value.trim();
+    const category = document.querySelector('select').value;
+    const price = document.querySelector('input[placeholder="Enter product price..."]').value;
+    const badge = document.querySelectorAll('select')[1].value;
+    const imageFile = document.querySelector('input[type="file"]').files[0];
+    const description = document.querySelector('textarea').value.trim();
+
+    if (!name || !category || !price || !imageFile || !description) {
+        alert("Please fill in all product details.");
+        return;
+    }
+
+    try {
+
+        // 1. Create a unique file name
+        const fileName =
+            Date.now() + "-" + imageFile.name.replace(/\s+/g, "-");
+
+        // 2. Upload image to Supabase Storage
+        const { data: uploadData, error: uploadError } =
+            await supabaseClient.storage
+                .from("product-images")
+                .upload(fileName, imageFile);
+
+        if (uploadError) {
+            alert("Image upload failed: " + uploadError.message);
+            return;
+        }
+
+        // 3. Save product information in the products table
+        const { data: productData, error: productError } =
+            await supabaseClient
+                .from("products")
+                .insert([
+                    {
+                        name: name,
+                        category: category,
+                        price: Number(price),
+                        badge: badge,
+                        image_url: uploadData.path,
+                        description: description
+                    }
+                ])
+                .select();
+
+        if (productError) {
+            alert("Product save failed: " + productError.message);
+            return;
+        }
+
+        // 4. Success
+        alert("Product saved successfully! 🎉");
+
+        // 5. Clear the form
+        document.querySelector('input[placeholder="Enter product name..."]').value = "";
+        document.querySelector('input[placeholder="Enter product price..."]').value = "";
+        document.querySelector('input[type="file"]').value = "";
+        document.querySelector('textarea').value = "";
+
+    } catch (error) {
+
+        alert("Something went wrong: " + error.message);
+
+    }
+}
+    
+    </script>
+
+</body>
+</html>
