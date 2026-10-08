@@ -960,9 +960,10 @@
                                     Product Name
                                 </label>
 
-                                <input
-                                    type="text"
-                                    placeholder="Example: Golden Pearl Necklace"
+                              <input
+                                id="productName"
+                                type="text"
+                                placeholder="Example: Golden Pearl Necklace"
                                 >
 
                             </div>
@@ -974,7 +975,7 @@
                                     Category
                                 </label>
 
-                                <select>
+                                <select id="productCategory">
 
                                     <option value="">
                                         Select Category
@@ -1019,10 +1020,11 @@
                                     Price
                                 </label>
 
-                                <input
-                                    type="number"
-                                    placeholder="Enter price"
-                                >
+                               <input
+                                   id="productPrice"
+                                   type="number"
+                                   placeholder="Enter price"
+                                 >
 
                             </div>
 
@@ -1033,7 +1035,7 @@
                                     Product Badge
                                 </label>
 
-                                <select>
+                                <select id="productBadge">
 
                                     <option>
                                         No Badge
@@ -1063,6 +1065,7 @@
                                 </label>
 
                                 <input
+                                    id="productImage"
                                     type="file"
                                     accept="image/*"
                                 >
@@ -1076,9 +1079,10 @@
                                     Product Description
                                 </label>
 
-                                <textarea
-                                    placeholder="Enter product description..."
-                                ></textarea>
+                              <textarea
+                                  id="productDescription"
+                                  placeholder="Enter product description..."
+                              ></textarea>
 
                             </div>
 
@@ -1291,13 +1295,12 @@
 
 
      async function saveProduct() {
-
-    const name = document.querySelector('input[placeholder="Enter product name..."]').value.trim();
-    const category = document.querySelector('select').value;
-    const price = document.querySelector('input[placeholder="Enter price"]').value;
-    const badge = document.querySelectorAll('select')[1].value;
-    const imageFile = document.querySelector('input[type="file"]').files[0];
-    const description = document.querySelector('textarea').value.trim();
+    const name = document.getElementById("productName").value.trim();
+    const category = document.getElementById("productCategory").value;
+    const price = document.getElementById("productPrice").value;
+    const badge = document.getElementById("productBadge").value;
+    const imageFile = document.getElementById("productImage").files[0];
+    const description = document.getElementById("productDescription").value.trim();
 
     if (!name || !category || !price || !imageFile || !description) {
         alert("Please fill in all product details.");
@@ -1346,8 +1349,8 @@
         alert("Product saved successfully! 🎉");
 
         // 5. Clear the form
-        document.querySelector('input[placeholder="Enter product name..."]').value = "";
-        document.querySelector('input[placeholder="Enter product price..."]').value = "";
+        document.getElementById("productName").value = "";
+        document.getElementById("productPrice").value = "";
         document.querySelector('input[type="file"]').value = "";
         document.querySelector('textarea').value = "";
 
