@@ -1295,6 +1295,17 @@
 
 
      async function saveProduct() {
+     
+         const { data: sessionData, error: sessionError } =
+           await supabaseClient.auth.getSession();
+
+          if (sessionError || !sessionData.session) {
+              alert("Admin session missing. Please log in again.");
+              return;
+    }
+
+    console.log("Authenticated user:", sessionData.session.user.id);
+
     const name = document.getElementById("productName").value.trim();
     const category = document.getElementById("productCategory").value;
     const price = document.getElementById("productPrice").value;
@@ -1337,8 +1348,7 @@
                         image_url: uploadData.path,
                         description: description
                     }
-                ])
-                .select();
+                 ]);
 
         if (productError) {
             alert("Product save failed: " + productError.message);
