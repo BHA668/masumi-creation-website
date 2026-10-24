@@ -953,6 +953,7 @@
 
 
                         <div class="form-grid">
+                        <input type="hidden" id="editingProductId" value="">
 
                             <div class="form-group">
 
@@ -968,6 +969,7 @@
 
                             </div>
 
+                           
 
                             <div class="form-group">
 
@@ -1122,11 +1124,12 @@
                     <th style="padding:12px;border-bottom:1px solid #ddd;">Category</th>
                     <th style="padding:12px;border-bottom:1px solid #ddd;">Price</th>
                     <th style="padding:12px;border-bottom:1px solid #ddd;">Badge</th>
+                    <th style="padding:12px;border-bottom:1px solid #ddd;">Actions</th>
                 </tr>
             </thead>
             <tbody id="productsTableBody">
                 <tr>
-                    <td colspan="5" style="padding:12px;">
+                    <td colspan="6" style="padding:12px;">
                         Products have not been loaded yet.
                     </td>
                 </tr>
@@ -1333,56 +1336,111 @@
     const imageFile = document.getElementById("productImage").files[0];
     const description = document.getElementById("productDescription").value.trim();
 
-    if (!name || !category || !price || !imageFile || !description) {
-        alert("Please fill in all product details.");
-        return;
-    }
+   const editingId =
+    document.getElementById("editingProductId").value;
+
+if (!name || !category || !price || (!imageFile && !editingId) || !description) {
+    alert("Please fill in all required product details and select an image for new products.");
+    return;
+}
 
     try {
 
-        // 1. Create a unique file name
-        const fileName =
-            Date.now() + "-" + imageFile.name.replace(/\s+/g, "-");
+      
+let imagePath = null;
 
-        // 2. Upload image to Supabase Storage
-        const { data: uploadData, error: uploadError } =
-            await supabaseClient.storage
-                .from("product-images")
-                .upload(fileName, imageFile);
+// Keep the existing image when editing without a new image.
+if (editingId && !imageFile) {
+    const { data: existingProduct, error: fetchError } =
+        await supabaseClient
+            .from("products")
+            .select("image_url")
+            .eq("id", editingId)
+            .single();
 
-        if (uploadError) {
-            alert("Image upload failed: " + uploadError.message);
-            return;
-        }
+    if (fetchError) {
+        alert("Could not load the existing product image: " + fetchError.message);
+        return;
+    }
 
-        // 3. Save product information in the products table
-        const { data: productData, error: productError } =
-            await supabaseClient
-                .from("products")
-                .insert([
-                    {
-                        name: name,
-                        category: category,
-                        price: Number(price),
-                        badge: badge,
-                        image_url: uploadData.path,
-                        description: description
-                    }
-                 ]);
+    imagePath = existingProduct.image_url;
+}
 
-        if (productError) {
-            alert("Product save failed: " + productError.message);
-            return;
-        }
+// Upload an image if one was selected.
+if (imageFile) {
+    const fileName =
+        Date.now() + "-" + imageFile.name.replace(/\s+/g, "-");
 
-        // 4. Success
-        alert("Product saved successfully! 🎉");
+    const { data: uploadData, error: uploadError } =
+        await supabaseClient.storage
+            .from("product-images")
+            .upload(fileName, imageFile);
 
-        // 5. Clear the form
+    if (uploadError) {
+        alert("Image upload failed: " + uploadError.message);
+        return;
+    }
+
+    imagePath = uploadData.path;
+}
+
+const productDetails = {
+    name: name,
+    category: category,
+    price: Number(price),
+    badge: badge,
+    description: description
+};
+
+if (imagePath) {
+    productDetails.image_url = imagePath;
+}
+
+let productError;
+
+if (editingId) {
+    const { error } = await supabaseClient
+        .from("products")
+        .update(productDetails)
+        .eq("id", editingId);
+
+    productError = error;
+} else {
+    const { error } = await supabaseClient
+        .from("products")
+        .insert([productDetails]);
+
+    productError = error;
+}
+
+if (productError) {
+    alert("Product save failed: " + productError.message);
+    return;
+}
+// 4. Success message
+if (editingId) {
+    alert("Product updated successfully! 🎉");
+} else {
+    alert("Product saved successfully! 🎉");
+}
+       
+        // 5. Clear the form and exit editing mode
         document.getElementById("productName").value = "";
+        document.getElementById("productCategory").selectedIndex = 0;
         document.getElementById("productPrice").value = "";
-        document.querySelector('input[type="file"]').value = "";
-        document.querySelector('textarea').value = "";
+        document.getElementById("productBadge").selectedIndex = 0;
+        document.getElementById("productImage").value = "";
+        document.getElementById("productDescription").value = "";
+        document.getElementById("editingProductId").value = "";
+
+        const saveButton = document.querySelector(".save-product-btn");
+       
+
+        if (saveButton) {
+            saveButton.textContent = "Save Product";
+        }
+
+        await loadProducts();
 
     } catch (error) {
 
@@ -1391,6 +1449,30 @@
     }
 }
     
+function editProduct(product) {
+    document.getElementById("editingProductId").value = product.id;
+    document.getElementById("productName").value = product.name;
+    document.getElementById("productCategory").value = product.category;
+    document.getElementById("productPrice").value = product.price;
+    document.getElementById("productBadge").value = product.badge || "";
+    document.getElementById("productDescription").value =
+        product.description || "";
+
+    // An existing image can be kept if you don't select another one.
+    document.getElementById("productImage").value = "";
+
+    const saveButton = document.querySelector(".save-product-btn");
+
+    if (saveButton) {
+        saveButton.textContent = "Update Product";
+    }
+
+    document.getElementById("productName").scrollIntoView({
+        behavior: "smooth",
+        block: "center"
+    });
+}
+
 async function loadProducts() {
     const message = document.getElementById("productsMessage");
     const tableBody = document.getElementById("productsTableBody");
@@ -1463,6 +1545,30 @@ async function loadProducts() {
                 cell.textContent = value == null ? "—" : String(value);
                 row.appendChild(cell);
             }
+
+                      // Actions cell
+            const actionsCell = document.createElement("td");
+            actionsCell.style.padding = "12px";
+            actionsCell.style.borderBottom = "1px solid #eee";
+
+            const editButton = document.createElement("button");
+            editButton.textContent = "Edit";
+            editButton.type = "button";
+            editButton.style.marginRight = "8px";
+            editButton.onclick = function () {
+            editProduct(product);
+            };
+
+            const deleteButton = document.createElement("button");
+            deleteButton.textContent = "Delete";
+            deleteButton.type = "button";
+            deleteButton.onclick = function () {
+                alert("Delete feature will be added next!");
+            };
+
+            actionsCell.appendChild(editButton);
+            actionsCell.appendChild(deleteButton);
+            row.appendChild(actionsCell);
 
             tableBody.appendChild(row);
         }
