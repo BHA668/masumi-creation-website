@@ -1450,6 +1450,9 @@ if (editingId) {
 }
     
 function editProduct(product) {
+
+    showPanelById("addProductPanel");
+    
     document.getElementById("editingProductId").value = product.id;
     document.getElementById("productName").value = product.name;
     document.getElementById("productCategory").value = product.category;
