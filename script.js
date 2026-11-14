@@ -453,6 +453,126 @@ function searchProducts() {
 
 
 /* =========================
+   LOAD PRODUCTS FROM SUPABASE
+   ========================= */
+
+async function loadStorefrontProducts() {
+
+    const container = document.getElementById("productsContainer");
+
+ if (!container || typeof supabaseClient === "undefined") {
+    return;
+}
+
+    try {
+
+        const { data: products, error } = await supabaseClient
+            .from("products")
+            .select("id, name, category, price, badge, image_url, description")
+            .order("created_at", { ascending: false });
+
+        if (error) {
+            console.error("Product loading failed:", error.message);
+            return;
+        }
+
+        container.replaceChildren();
+
+        if (!products || products.length === 0) {
+            container.textContent = "No products available yet.";
+            return;
+        }
+
+        products.forEach(function(product) {
+
+            const card = document.createElement("div");
+            card.className = "card product-card";
+
+            if (product.badge) {
+                const badge = document.createElement("span");
+                badge.className = "badge";
+                badge.textContent = product.badge;
+                card.appendChild(badge);
+            }
+
+            if (product.image_url) {
+
+                const image = document.createElement("img");
+
+                const imageUrl = product.image_url.startsWith("http")
+                    ? product.image_url
+                    : supabaseClient.storage
+                        .from("product-images")
+                        .getPublicUrl(product.image_url).data.publicUrl;
+
+                image.src = imageUrl;
+                image.alt = product.name || "Product";
+                image.loading = "lazy";
+
+                card.appendChild(image);
+            }
+
+            const name = document.createElement("h3");
+            name.textContent = product.name;
+            card.appendChild(name);
+
+            const category = document.createElement("p");
+            category.textContent = product.category || "";
+            card.appendChild(category);
+
+            const description = document.createElement("p");
+            description.textContent = product.description || "";
+            card.appendChild(description);
+
+            const info = document.createElement("div");
+            info.className = "product-card-info";
+
+            const price = document.createElement("p");
+            price.className = "price";
+            price.textContent = "💎 Price: RM " +
+                Number(product.price).toFixed(2);
+
+            info.appendChild(price);
+
+            const cartButton = document.createElement("button");
+            cartButton.className = "card-btn";
+            cartButton.type = "button";
+            cartButton.textContent = "Add to Cart";
+
+            cartButton.addEventListener("click", function() {
+                addToCart(product.name);
+            });
+
+            info.appendChild(cartButton);
+
+            const wishlistButton = document.createElement("button");
+            wishlistButton.className = "card-btn";
+            wishlistButton.type = "button";
+            wishlistButton.textContent = "❤️ Wishlist";
+
+            wishlistButton.addEventListener("click", function() {
+                addToWishlist(product.name);
+            });
+
+            info.appendChild(wishlistButton);
+
+            card.appendChild(info);
+            container.appendChild(card);
+
+        });
+
+        searchProducts();
+
+        console.log("Storefront products loaded successfully!");
+
+    } catch (error) {
+
+        console.error("Something went wrong:", error.message);
+
+    }
+}
+
+/* =========================
    INITIALIZE
    ========================= */
 
@@ -466,4 +586,5 @@ document.addEventListener("DOMContentLoaded", function() {
 
     displayWishlist();
 
+    loadStorefrontProducts();
 });
