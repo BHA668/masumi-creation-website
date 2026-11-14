@@ -1572,12 +1572,43 @@ async function loadProducts() {
             editProduct(product);
             };
 
-            const deleteButton = document.createElement("button");
-            deleteButton.textContent = "Delete";
-            deleteButton.type = "button";
-            deleteButton.onclick = function () {
-                alert("Delete feature will be added next!");
-            };
+const deleteButton = document.createElement("button");
+deleteButton.textContent = "Delete";
+deleteButton.type = "button";
+
+deleteButton.onclick = async function () {
+    const confirmed = confirm(
+        "Are you sure you want to delete " + product.name + "?"
+    );
+
+    if (!confirmed) {
+        return;
+    }
+
+    try {
+        const { data, error } = await supabaseClient
+            .from("products")
+            .delete()
+            .eq("id", product.id)
+            .select("id");
+
+        if (error) {
+            alert("Delete failed: " + error.message);
+            return;
+        }
+
+        if (!data || data.length === 0) {
+            alert("Product was not deleted. Check database permissions.");
+            return;
+        }
+
+        alert("Product deleted successfully!");
+        await loadProducts();
+
+    } catch (error) {
+        alert("Something went wrong: " + error.message);
+    }
+};
 
             actionsCell.appendChild(editButton);
             actionsCell.appendChild(deleteButton);
