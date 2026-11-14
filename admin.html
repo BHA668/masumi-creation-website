@@ -1397,14 +1397,23 @@ if (imagePath) {
 }
 
 let productError;
+let updatedRows = null;
 
 if (editingId) {
-    const { error } = await supabaseClient
+    const { data, error } = await supabaseClient
         .from("products")
         .update(productDetails)
-        .eq("id", editingId);
+        .eq("id", editingId)
+        .select("id");
 
     productError = error;
+    updatedRows = data;
+
+    if (!productError && (!updatedRows || updatedRows.length === 0)) {
+        alert("No product was updated. Please check the product ID and database permissions.");
+        return;
+    }
+
 } else {
     const { error } = await supabaseClient
         .from("products")
@@ -1417,12 +1426,13 @@ if (productError) {
     alert("Product save failed: " + productError.message);
     return;
 }
-// 4. Success message
+
 if (editingId) {
     alert("Product updated successfully! 🎉");
 } else {
     alert("Product saved successfully! 🎉");
 }
+
        
         // 5. Clear the form and exit editing mode
         document.getElementById("productName").value = "";
