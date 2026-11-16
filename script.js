@@ -586,5 +586,82 @@ document.addEventListener("DOMContentLoaded", function() {
 
     displayWishlist();
 
-    loadStorefrontProducts();
+
 });
+
+async function loadCategoryProducts(categoryName) {
+    const container = document.getElementById("categoryProductsContainer");
+
+    if (!container || typeof supabaseClient === "undefined") {
+        return;
+    }
+
+    try {
+        const { data: products, error } = await supabaseClient
+            .from("products")
+            .select("id, name, category, price, badge, image_url, description")
+            .eq("category", categoryName)
+            .order("created_at", { ascending: false });
+
+        if (error) {
+            console.error("Category product loading failed:", error.message);
+            return;
+        }
+
+        products.forEach(function(product) {
+            const card = document.createElement("div");
+            card.className = "card product-card";
+
+            if (product.badge) {
+                const badge = document.createElement("span");
+                badge.className = "badge";
+                badge.textContent = product.badge;
+                card.appendChild(badge);
+            }
+
+            if (product.image_url) {
+                const image = document.createElement("img");
+
+                image.src = product.image_url.startsWith("http")
+                    ? product.image_url
+                    : supabaseClient.storage
+                        .from("product-images")
+                        .getPublicUrl(product.image_url).data.publicUrl;
+
+                image.alt = product.name;
+                card.appendChild(image);
+            }
+
+            const name = document.createElement("h3");
+            name.textContent = product.name;
+            card.appendChild(name);
+
+            const description = document.createElement("p");
+            description.textContent = product.description || "";
+            card.appendChild(description);
+
+            const price = document.createElement("p");
+            price.textContent = "💎 Price: RM " + Number(product.price).toFixed(2);
+            card.appendChild(price);
+
+            const cartButton = document.createElement("button");
+            cartButton.textContent = "Add to Cart";
+            cartButton.addEventListener("click", function() {
+                addToCart(product.name);
+            });
+            card.appendChild(cartButton);
+
+            const wishlistButton = document.createElement("button");
+            wishlistButton.textContent = "Wishlist";
+            wishlistButton.addEventListener("click", function() {
+                addToWishlist(product.name);
+            });
+            card.appendChild(wishlistButton);
+
+            container.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error("Unable to load category products:", error);
+    }
+}

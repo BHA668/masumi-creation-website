@@ -139,7 +139,7 @@ Premium Artificial Jewellery • Elegant Designs • Affordable Prices
 <h2>💎 Necklace Collection</h2>
 
 
-<div class="products">
+<div class="products" id="categoryProductsContainer">
 
 
 <!-- ================= NECKLACE 01 ================= -->
@@ -451,7 +451,26 @@ alt="Zoomed Necklace">
 
 <!-- ================= SCRIPT ================= -->
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://nipzghcilyhowudosabm.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HIGQwrRY5Ssz-DMhCbC3EQ_waher5Hn";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+</script>
+
 <script src="script.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    loadCategoryProducts("Necklaces");
+});
+</script>
 
 </body>
 
