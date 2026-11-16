@@ -504,6 +504,21 @@ alt="Zoomed Necklace">
 
 
 
+<!-- ================= SUPABASE CONNECTION ================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://nipzghcilyhowudosabm.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HIGQwrRY5Ssz-DMhCbC3EQ_waher5Hn";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+</script>
+
 <!-- ================= PRODUCT SYSTEM ================= -->
 
 <script>
@@ -560,67 +575,103 @@ const necklaceProducts = {
 
 
 /* =========================================================
-   GET PRODUCT NUMBER FROM URL
+   LOAD ORIGINAL OR ADMIN-ADDED PRODUCT
    ========================================================= */
+
+let currentProduct = null;
 
 const urlParams = new URLSearchParams(window.location.search);
-
+const supabaseProductId = urlParams.get("id");
 let productNumber = Number(urlParams.get("product"));
-
-if (!necklaceProducts[productNumber]) {
-    productNumber = 1;
-}
-
-
-/* =========================================================
-   LOAD CORRECT PRODUCT
-   ========================================================= */
-
-const currentProduct = necklaceProducts[productNumber];
-
-
-document.title =
-    "Masumi Creation | " +
-    currentProduct.name;
-
-
-document.getElementById("pageTitle").innerText =
-    currentProduct.name;
-
-
-document.getElementById("productName").innerText =
-    currentProduct.name;
-
-
-document.getElementById("productDescription").innerText =
-    currentProduct.description;
-
-
-document.getElementById("mainImage").src =
-    currentProduct.image;
-
-
-document.getElementById("mainImage").alt =
-    currentProduct.name;
-
-
-/* =========================================================
-   WHATSAPP PRODUCT ORDER
-   ========================================================= */
 
 const whatsappNumber = "917874216100";
 
-const whatsappMessage =
-    "Hello Masumi Creation! I am interested in " +
-    currentProduct.name +
-    ". Please share the price and availability.";
+async function loadProductDetails() {
 
+    // ADMIN-ADDED PRODUCT
+    if (supabaseProductId) {
 
-document.getElementById("whatsappButton").href =
-    "https://wa.me/" +
-    whatsappNumber +
-    "?text=" +
-    encodeURIComponent(whatsappMessage);
+        const { data: product, error } = await supabaseClient
+            .from("products")
+            .select("id, name, category, price, image_url, description")
+            .eq("id", supabaseProductId)
+            .single();
+
+        if (error || !product) {
+            console.error("Product not found:", error);
+            document.getElementById("productName").textContent =
+                "Product not found";
+            return;
+        }
+
+        let imageUrl = "";
+
+        if (product.image_url) {
+            imageUrl = product.image_url.startsWith("http")
+                ? product.image_url
+                : supabaseClient.storage
+                    .from("product-images")
+                    .getPublicUrl(product.image_url).data.publicUrl;
+        }
+
+        currentProduct = {
+            name: product.name,
+            image: imageUrl,
+            description: product.description || "",
+            price: product.price
+        };
+
+    } else {
+
+        // ORIGINAL SEVEN NECKLACES
+        if (!necklaceProducts[productNumber]) {
+            productNumber = 1;
+        }
+
+        currentProduct = necklaceProducts[productNumber];
+        currentProduct.price = null;
+    }
+
+    // DISPLAY PRODUCT INFORMATION
+    document.title = "Masumi Creation | " + currentProduct.name;
+
+    document.getElementById("pageTitle").textContent =
+        currentProduct.name;
+
+    document.getElementById("productName").textContent =
+        currentProduct.name;
+
+    document.getElementById("productDescription").textContent =
+        currentProduct.description;
+
+    const mainImage = document.getElementById("mainImage");
+    mainImage.src = currentProduct.image;
+    mainImage.alt = currentProduct.name;
+
+    // DISPLAY PRICE
+    const priceElement = document.querySelector(".product-price");
+
+    if (currentProduct.price !== null) {
+        priceElement.textContent =
+            "💎 Price: RM " + Number(currentProduct.price).toFixed(2);
+    } else {
+        priceElement.textContent = "💎 Price: Contact Us";
+    }
+
+    // WHATSAPP ORDER
+    const whatsappMessage =
+        "Hello Masumi Creation! I am interested in " +
+        currentProduct.name +
+        ". Please share the price and availability.";
+
+    document.getElementById("whatsappButton").href =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(whatsappMessage);
+}
+
+loadProductDetails();
 
 
 /* =========================================================

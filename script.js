@@ -589,6 +589,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 });
 
+
 async function loadCategoryProducts(categoryName) {
     const container = document.getElementById("categoryProductsContainer");
 
@@ -604,21 +605,16 @@ async function loadCategoryProducts(categoryName) {
             .order("created_at", { ascending: false });
 
         if (error) {
-            console.error("Category product loading failed:", error.message);
+            console.error("Product loading failed:", error.message);
             return;
         }
 
         products.forEach(function(product) {
+
             const card = document.createElement("div");
             card.className = "card product-card";
 
-            if (product.badge) {
-                const badge = document.createElement("span");
-                badge.className = "badge";
-                badge.textContent = product.badge;
-                card.appendChild(badge);
-            }
-
+            // Product image
             if (product.image_url) {
                 const image = document.createElement("img");
 
@@ -632,32 +628,35 @@ async function loadCategoryProducts(categoryName) {
                 card.appendChild(image);
             }
 
+            // Product name
             const name = document.createElement("h3");
             name.textContent = product.name;
             card.appendChild(name);
 
+            // Product description
             const description = document.createElement("p");
             description.textContent = product.description || "";
             card.appendChild(description);
 
+            // Product price
             const price = document.createElement("p");
-            price.textContent = "💎 Price: RM " + Number(product.price).toFixed(2);
+            price.className = "price";
+            price.textContent = "💎 Price: RM " +
+                Number(product.price).toFixed(2);
             card.appendChild(price);
 
-            const cartButton = document.createElement("button");
-            cartButton.textContent = "Add to Cart";
-            cartButton.addEventListener("click", function() {
-                addToCart(product.name);
-            });
-            card.appendChild(cartButton);
+            // View Product button
+            const viewButton = document.createElement("a");
+            viewButton.href =
+                "designer-necklace.html?id=" +
+                encodeURIComponent(product.id);
 
-            const wishlistButton = document.createElement("button");
-            wishlistButton.textContent = "Wishlist";
-            wishlistButton.addEventListener("click", function() {
-                addToWishlist(product.name);
-            });
-            card.appendChild(wishlistButton);
+            viewButton.className = "btn";
+            viewButton.textContent = "View Product";
 
+            card.appendChild(viewButton);
+
+            // Add product without removing original cards
             container.appendChild(card);
         });
 
@@ -665,3 +664,4 @@ async function loadCategoryProducts(categoryName) {
         console.error("Unable to load category products:", error);
     }
 }
+
