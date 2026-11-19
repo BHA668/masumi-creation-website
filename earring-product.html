@@ -479,6 +479,24 @@ alt="Zoomed Earring">
 
 <!-- ================= EARRING DATA ================= -->
 
+
+<!-- ================= SUPABASE CONNECTION ================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://nipzghcilyhowudosabm.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HIGQwrRY5Ssz-DMhCbC3EQ_waher5Hn";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+</script>
+
+
+<!-- ================= EARRING DATA ================= -->
+
 <script>
 
 const earringProducts = {
@@ -497,83 +515,140 @@ const earringProducts = {
 
 };
 
+const urlParams = new URLSearchParams(window.location.search);
 
-const urlParams =
-    new URLSearchParams(window.location.search);
+let currentProduct = null;
 
-
-let productNumber =
-    Number(urlParams.get("product"));
+const whatsappNumber = "917874216100";
 
 
-if (!earringProducts[productNumber]) {
+/* DISPLAY PRODUCT INFORMATION */
 
-    productNumber = 1;
+function displayEarringProduct(product, isAdminProduct) {
 
+    currentProduct = product;
+
+    document.title = "Masumi Creation | " + product.name;
+
+    document.getElementById("pageTitle").innerText = product.name;
+
+    document.getElementById("productName").innerText = product.name;
+
+    document.getElementById("productDescription").innerText =
+        product.description || "";
+
+    const mainImage = document.getElementById("mainImage");
+
+    mainImage.src = product.image;
+    mainImage.alt = product.name;
+
+    const priceElement = document.querySelector(".product-price");
+
+    if (isAdminProduct) {
+        priceElement.innerText =
+            "💎 Price: RM " + Number(product.price).toFixed(2);
+    } else {
+        priceElement.innerText = "💎 Price: Contact Us";
+    }
+
+    const whatsappMessage =
+        "Hello Masumi Creation! I am interested in " +
+        product.name +
+        ". Please share the price and availability.";
+
+    document.getElementById("whatsappButton").href =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(whatsappMessage);
 }
 
 
-const currentProduct =
-    earringProducts[productNumber];
+/* LOAD PRODUCT */
+
+async function loadEarringProductDetails() {
+
+    const adminProductId = urlParams.get("id");
+
+    // ADMIN-ADDED PRODUCT
+    if (adminProductId) {
+
+        try {
+
+            const { data: product, error } = await supabaseClient
+                .from("products")
+                .select("id, name, category, price, image_url, description")
+                .eq("id", adminProductId)
+                .eq("category", "Earrings")
+                .single();
+
+            if (error || !product) {
+                document.getElementById("mainImage").style.display = "none";
+                document.querySelector(".product-price").innerText = "Price unavailable";
+                document.getElementById("whatsappButton").style.display = "none";
+                console.error("Earring product loading failed:", error);
+
+                document.getElementById("productName").innerText =
+                    "Product could not be loaded";
+
+                document.getElementById("productDescription").innerText =
+                    "Please return to the Earrings collection and try again.";
+
+                return;
+            }
+
+            const imageUrl = product.image_url
+                ? (
+                    product.image_url.startsWith("http")
+                        ? product.image_url
+                        : supabaseClient.storage
+                            .from("product-images")
+                            .getPublicUrl(product.image_url).data.publicUrl
+                )
+                : "";
+
+            displayEarringProduct({
+                id: product.id,
+                name: product.name,
+                image: imageUrl,
+                description: product.description,
+                price: product.price
+            }, true);
+
+        } catch (error) {
+
+            console.error("Unable to load Earring:", error);
+
+        }
+
+        return;
+    }
 
 
+    // ORIGINAL STATIC PRODUCTS
 
-/* PRODUCT INFORMATION */
+    let productNumber = Number(urlParams.get("product"));
 
-document.title =
-    "Masumi Creation | " +
-    currentProduct.name;
+    if (!earringProducts[productNumber]) {
+        productNumber = 1;
+    }
 
+    const product = earringProducts[productNumber];
 
-document.getElementById("pageTitle").innerText =
-    currentProduct.name;
-
-
-document.getElementById("productName").innerText =
-    currentProduct.name;
-
-
-document.getElementById("productDescription").innerText =
-    currentProduct.description;
-
-
-document.getElementById("mainImage").src =
-    currentProduct.image;
-
-
-document.getElementById("mainImage").alt =
-    currentProduct.name;
-
-
-
-/* WHATSAPP */
-
-const whatsappNumber =
-    "917874216100";
-
-
-const whatsappMessage =
-    "Hello Masumi Creation! I am interested in " +
-    currentProduct.name +
-    ". Please share the price and availability.";
-
-
-document.getElementById("whatsappButton").href =
-    "https://wa.me/" +
-    whatsappNumber +
-    "?text=" +
-    encodeURIComponent(whatsappMessage);
-
+    displayEarringProduct(product, false);
+}
 
 
 /* CART */
 
 function addCurrentProductToCart() {
 
-    addToCart(
-        currentProduct.name,
-        quantity
-    );
+    if (!currentProduct) {
+        alert("Please wait for the product to load.");
+        return;
+    }
+
+    addToCart(currentProduct.name, quantity);
 
 }
 
@@ -582,9 +657,12 @@ function addCurrentProductToCart() {
 
 function addCurrentProductToWishlist() {
 
-    addToWishlist(
-        currentProduct.name
-    );
+    if (!currentProduct) {
+        alert("Please wait for the product to load.");
+        return;
+    }
+
+    addToWishlist(currentProduct.name);
 
 }
 
@@ -593,11 +671,9 @@ function addCurrentProductToWishlist() {
 
 function openImage(image) {
 
-    const modal =
-        document.getElementById("imageModal");
+    const modal = document.getElementById("imageModal");
 
-    const zoomedImage =
-        document.getElementById("zoomedImage");
+    const zoomedImage = document.getElementById("zoomedImage");
 
     if (modal && zoomedImage) {
 
@@ -612,8 +688,7 @@ function openImage(image) {
 
 function closeImage() {
 
-    const modal =
-        document.getElementById("imageModal");
+    const modal = document.getElementById("imageModal");
 
     if (modal) {
 
@@ -623,8 +698,12 @@ function closeImage() {
 
 }
 
-</script>
 
+/* START PRODUCT LOADING */
+
+loadEarringProductDetails();
+
+</script>
 
 
 <script src="script.js"></script>

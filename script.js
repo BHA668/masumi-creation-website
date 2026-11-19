@@ -590,8 +590,13 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 
-async function loadCategoryProducts(categoryName) {
-    const container = document.getElementById("categoryProductsContainer");
+
+async function loadCategoryProducts(categoryName, detailPage = "designer-necklace.html") {
+    const container = document.getElementById(
+        categoryName === "Earrings"
+            ? "earringProductsContainer"
+            : "categoryProductsContainer"
+    );
 
     if (!container || typeof supabaseClient === "undefined") {
         return;
@@ -610,11 +615,9 @@ async function loadCategoryProducts(categoryName) {
         }
 
         products.forEach(function(product) {
-
             const card = document.createElement("div");
             card.className = "card product-card";
 
-            // Product image
             if (product.image_url) {
                 const image = document.createElement("img");
 
@@ -628,27 +631,23 @@ async function loadCategoryProducts(categoryName) {
                 card.appendChild(image);
             }
 
-            // Product name
             const name = document.createElement("h3");
             name.textContent = product.name;
             card.appendChild(name);
 
-            // Product description
             const description = document.createElement("p");
             description.textContent = product.description || "";
             card.appendChild(description);
 
-            // Product price
             const price = document.createElement("p");
             price.className = "price";
             price.textContent = "💎 Price: RM " +
                 Number(product.price).toFixed(2);
             card.appendChild(price);
 
-            // View Product button
             const viewButton = document.createElement("a");
             viewButton.href =
-                "designer-necklace.html?id=" +
+                detailPage + "?id=" +
                 encodeURIComponent(product.id);
 
             viewButton.className = "btn";
@@ -656,7 +655,78 @@ async function loadCategoryProducts(categoryName) {
 
             card.appendChild(viewButton);
 
-            // Add product without removing original cards
+            container.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error("Unable to load category products:", error);
+    }
+}
+
+async function loadCategoryProducts(categoryName, detailPage = "designer-necklace.html") {
+    const container = document.getElementById(
+        categoryName === "Earrings"
+            ? "earringProductsContainer"
+            : "categoryProductsContainer"
+    );
+
+    if (!container || typeof supabaseClient === "undefined") {
+        return;
+    }
+
+    try {
+        const { data: products, error } = await supabaseClient
+            .from("products")
+            .select("id, name, category, price, badge, image_url, description")
+            .eq("category", categoryName)
+            .order("created_at", { ascending: false });
+
+        if (error) {
+            console.error("Product loading failed:", error.message);
+            return;
+        }
+
+        products.forEach(function(product) {
+            const card = document.createElement("div");
+            card.className = "card product-card";
+
+            if (product.image_url) {
+                const image = document.createElement("img");
+
+                image.src = product.image_url.startsWith("http")
+                    ? product.image_url
+                    : supabaseClient.storage
+                        .from("product-images")
+                        .getPublicUrl(product.image_url).data.publicUrl;
+
+                image.alt = product.name;
+                card.appendChild(image);
+            }
+
+            const name = document.createElement("h3");
+            name.textContent = product.name;
+            card.appendChild(name);
+
+            const description = document.createElement("p");
+            description.textContent = product.description || "";
+            card.appendChild(description);
+
+            const price = document.createElement("p");
+            price.className = "price";
+            price.textContent = "💎 Price: RM " +
+                Number(product.price).toFixed(2);
+            card.appendChild(price);
+
+            const viewButton = document.createElement("a");
+            viewButton.href =
+                detailPage + "?id=" +
+                encodeURIComponent(product.id);
+
+            viewButton.className = "btn";
+            viewButton.textContent = "View Product";
+
+            card.appendChild(viewButton);
+
             container.appendChild(card);
         });
 
