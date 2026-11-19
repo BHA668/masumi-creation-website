@@ -229,7 +229,7 @@ class="watch-collection">
 </h2>
 
 
-<div class="watch-products">
+<div class="watch-products" id="categoryProductsContainer">
 
 
 <!-- WATCH 1 -->
@@ -397,7 +397,26 @@ Close
 
 
 
+<!-- SUPABASE CONNECTION -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://nipzghcilyhowudosabm.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HIGQwrRY5Ssz-DMhCbC3EQ_waher5Hn";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+</script>
+
 <script src="script.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    loadCategoryProducts("Watches", "watch-product.html");
+});
+</script>
 
 </body>
 

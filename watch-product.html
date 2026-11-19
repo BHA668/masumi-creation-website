@@ -485,157 +485,181 @@ alt="Zoomed Watch">
 
 <!-- ================= WATCH DATA ================= -->
 
+
+<!-- ================= SUPABASE CONNECTION ================= -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <script>
+const SUPABASE_URL = "https://nipzghcilyhowudosabm.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HIGQwrRY5Ssz-DMhCbC3EQ_waher5Hn";
 
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+</script>
+
+<!-- ================= WATCH DATA ================= -->
+<script>
 const watchProducts = {
-
     1: {
         name: "Watch 01",
         image: "./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (1).jpeg",
         description: "Elegant stylish watch suitable for everyday wear, parties and special occasions."
     },
-
     2: {
         name: "Watch 02",
         image: "./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (2).jpeg",
         description: "Beautiful stylish watch perfect for parties, gifting and everyday style."
     },
-
     3: {
         name: "Ring Watch 03",
         image: "./image/WhatsApp Image 2026-07-21 at 10.17.25 AM (3).jpeg",
         description: "Unique ring watch design for customers looking for a fashionable and distinctive accessory."
     }
-
 };
 
+const urlParams = new URLSearchParams(window.location.search);
+let currentProduct = null;
+const whatsappNumber = "917874216100";
 
-const urlParams =
-    new URLSearchParams(window.location.search);
+function displayWatchProduct(product, isAdminProduct) {
+    currentProduct = product;
 
+    document.title = "Masumi Creation | " + product.name;
 
-let productNumber =
-    Number(urlParams.get("product"));
+    document.getElementById("pageTitle").innerText = product.name;
+    document.getElementById("productName").innerText = product.name;
+    document.getElementById("productDescription").innerText =
+        product.description || "";
 
+    const mainImage = document.getElementById("mainImage");
 
-if (!watchProducts[productNumber]) {
+    mainImage.src = product.image || "";
+    mainImage.alt = product.name;
+    mainImage.style.display = product.image ? "block" : "none";
 
-    productNumber = 1;
+    const priceElement = document.querySelector(".product-price");
 
+    if (isAdminProduct) {
+        priceElement.innerText =
+            "💎 Price: RM " + Number(product.price).toFixed(2);
+    } else {
+        priceElement.innerText = "💎 Price: Contact Us";
+    }
+
+    const whatsappMessage =
+        "Hello Masumi Creation! I am interested in " +
+        product.name +
+        ". Please share the price and availability.";
+
+    document.getElementById("whatsappButton").href =
+        "https://wa.me/" +
+        whatsappNumber +
+        "?text=" +
+        encodeURIComponent(whatsappMessage);
 }
 
+async function loadWatchProductDetails() {
+    const adminProductId = urlParams.get("id");
 
-const currentProduct =
-    watchProducts[productNumber];
+    if (adminProductId) {
+        try {
+            const { data: product, error } = await supabaseClient
+                .from("products")
+                .select("id, name, category, price, image_url, description")
+                .eq("id", adminProductId)
+                .eq("category", "Watches")
+                .single();
 
+            if (error || !product) {
+                document.getElementById("mainImage").style.display = "none";
+                document.querySelector(".product-price").innerText =
+                    "Price unavailable";
+                document.getElementById("whatsappButton").style.display = "none";
 
+                console.error("Watch product loading failed:", error);
 
-/* PRODUCT INFORMATION */
+                document.getElementById("productName").innerText =
+                    "Product could not be loaded";
 
-document.title =
-    "Masumi Creation | " +
-    currentProduct.name;
+                document.getElementById("productDescription").innerText =
+                    "Please return to the Watches collection and try again.";
 
+                return;
+            }
 
-document.getElementById("pageTitle").innerText =
-    currentProduct.name;
+            const imageUrl = product.image_url
+                ? product.image_url.startsWith("http")
+                    ? product.image_url
+                    : supabaseClient.storage
+                        .from("product-images")
+                        .getPublicUrl(product.image_url).data.publicUrl
+                : "";
 
+            displayWatchProduct({
+                id: product.id,
+                name: product.name,
+                image: imageUrl,
+                description: product.description,
+                price: product.price
+            }, true);
 
-document.getElementById("productName").innerText =
-    currentProduct.name;
+        } catch (error) {
+            console.error("Unable to load watch product:", error);
+        }
 
+        return;
+    }
 
-document.getElementById("productDescription").innerText =
-    currentProduct.description;
+    let productNumber = Number(urlParams.get("product"));
 
+    if (!watchProducts[productNumber]) {
+        productNumber = 1;
+    }
 
-document.getElementById("mainImage").src =
-    currentProduct.image;
-
-
-document.getElementById("mainImage").alt =
-    currentProduct.name;
-
-
-
-/* WHATSAPP */
-
-const whatsappNumber =
-    "917874216100";
-
-
-const whatsappMessage =
-    "Hello Masumi Creation! I am interested in " +
-    currentProduct.name +
-    ". Please share the price and availability.";
-
-
-document.getElementById("whatsappButton").href =
-    "https://wa.me/" +
-    whatsappNumber +
-    "?text=" +
-    encodeURIComponent(whatsappMessage);
-
-
-
-/* CART */
+    displayWatchProduct(watchProducts[productNumber], false);
+}
 
 function addCurrentProductToCart() {
+    if (!currentProduct) {
+        alert("Product is not available.");
+        return;
+    }
 
-    addToCart(
-        currentProduct.name,
-        quantity
-    );
-
+    addToCart(currentProduct.name, quantity);
 }
-
-
-/* WISHLIST */
 
 function addCurrentProductToWishlist() {
+    if (!currentProduct) {
+        alert("Product is not available.");
+        return;
+    }
 
-    addToWishlist(
-        currentProduct.name
-    );
-
+    addToWishlist(currentProduct.name);
 }
-
-
-/* IMAGE VIEWER */
 
 function openImage(image) {
-
-    const modal =
-        document.getElementById("imageModal");
-
-    const zoomedImage =
-        document.getElementById("zoomedImage");
+    const modal = document.getElementById("imageModal");
+    const zoomedImage = document.getElementById("zoomedImage");
 
     if (modal && zoomedImage) {
-
         zoomedImage.src = image;
-
         modal.style.display = "flex";
-
     }
-
 }
-
 
 function closeImage() {
-
-    const modal =
-        document.getElementById("imageModal");
+    const modal = document.getElementById("imageModal");
 
     if (modal) {
-
         modal.style.display = "none";
-
     }
-
 }
 
+loadWatchProductDetails();
 </script>
+
 
 
 <script src="script.js"></script>
