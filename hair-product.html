@@ -282,19 +282,14 @@ everyday styling, parties and special occasions.
 
 <!-- QUANTITY -->
 
+<!-- QUANTITY -->
 <div class="quantity-box">
 
-<button onclick="changeQty(-1)">
-−
-</button>
+    <button onclick="changeHairQty(-1)">−</button>
 
-<span id="qty">
-1
-</span>
+    <span id="qty">1</span>
 
-<button onclick="changeQty(1)">
-+
-</button>
+    <button onclick="changeHairQty(1)">+</button>
 
 </div>
 
@@ -520,7 +515,7 @@ const productId = urlParams.get("id");
 const productNumber = Number(urlParams.get("product"));
 
 let currentProduct = null;
-let quantity = 1;
+let hairQuantity = 1;
 
 function displayHairProduct(product, isAdminProduct) {
     currentProduct = product;
@@ -607,7 +602,7 @@ async function loadHairProductDetails() {
 
 function addCurrentProductToCart() {
     if (currentProduct) {
-        addToCart(currentProduct.name, quantity);
+        addToCart(currentProduct.name, hairQuantity);
     }
 }
 
@@ -617,9 +612,9 @@ function addCurrentProductToWishlist() {
     }
 }
 
-function changeQty(amount) {
-    quantity = Math.max(1, quantity + amount);
-    document.getElementById("qty").innerText = quantity;
+function changeHairQty(amount) {
+    hairQuantity = Math.max(1, hairQuantity + amount);
+    document.getElementById("qty").innerText = hairQuantity;
 }
 
 function openImage(image) {
