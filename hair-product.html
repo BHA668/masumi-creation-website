@@ -481,163 +481,167 @@ alt="Zoomed Hair Accessory">
 
 
 
-<!-- ================= PRODUCT DATA ================= -->
+<!-- ================= SUPABASE CONNECTION ================= -->
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 
 <script>
+const SUPABASE_URL = "https://nipzghcilyhowudosabm.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HIGQwrRY5Ssz-DMhCbC3EQ_waher5Hn";
 
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+</script>
+
+
+<script>
 const hairProducts = {
-
     1: {
         name: "Hair Clip 01",
         image: "./image/WhatsApp Image 2026-07-21 at 10.17.22 AM (1).jpeg",
         description: "Elegant hair clip suitable for everyday styling, parties and special occasions."
     },
-
     2: {
         name: "Hair Clip 02",
         image: "./image/WhatsApp Image 2026-07-21 at 10.17.23 AM.jpeg",
         description: "Beautiful stylish hair clip designed to complete your elegant look."
     },
-
     3: {
         name: "Hair Clip 03",
         image: "./image/WhatsApp Image 2026-07-21 at 10.17.24 AM.jpeg",
         description: "Stylish hair accessory perfect for parties, festivals and everyday wear."
     }
-
 };
 
+const urlParams = new URLSearchParams(window.location.search);
+const productId = urlParams.get("id");
+const productNumber = Number(urlParams.get("product"));
 
-const urlParams =
-    new URLSearchParams(window.location.search);
+let currentProduct = null;
+let quantity = 1;
 
+function displayHairProduct(product, isAdminProduct) {
+    currentProduct = product;
 
-let productNumber =
-    Number(urlParams.get("product"));
+    document.title = "Masumi Creation | " + product.name;
+    document.getElementById("pageTitle").innerText = product.name;
+    document.getElementById("productName").innerText = product.name;
+    document.getElementById("productDescription").innerText =
+        product.description || "";
 
+    const mainImage = document.getElementById("mainImage");
+    mainImage.src = product.image;
+    mainImage.alt = product.name;
+    mainImage.style.display = product.image ? "block" : "none";
 
-if (!hairProducts[productNumber]) {
+    document.querySelector(".product-price").innerText =
+        isAdminProduct
+            ? "💎 Price: RM " + Number(product.price).toFixed(2)
+            : "💎 Price: Contact Us";
 
-    productNumber = 1;
+    const whatsappMessage =
+        "Hello Masumi Creation! I am interested in " +
+        product.name +
+        ". Please share the price and availability.";
 
+    document.getElementById("whatsappButton").href =
+        "https://wa.me/917874216100?text=" +
+        encodeURIComponent(whatsappMessage);
 }
 
+async function loadHairProductDetails() {
+    if (productId) {
+        try {
+            const { data: product, error } = await supabaseClient
+                .from("products")
+                .select("id, name, category, price, image_url, description")
+                .eq("id", productId)
+                .eq("category", "Hair Accessories")
+                .single();
 
-const currentProduct =
-    hairProducts[productNumber];
+            if (error || !product) {
+                throw error || new Error("Product not found");
+            }
 
+            const imageUrl = product.image_url
+                ? product.image_url.startsWith("http")
+                    ? product.image_url
+                    : supabaseClient.storage
+                        .from("product-images")
+                        .getPublicUrl(product.image_url).data.publicUrl
+                : "";
 
+            displayHairProduct({
+                name: product.name,
+                description: product.description,
+                price: product.price,
+                image: imageUrl
+            }, true);
 
-/* PRODUCT INFORMATION */
+        } catch (error) {
+            console.error("Unable to load hair product:", error);
 
-document.title =
-    "Masumi Creation | " +
-    currentProduct.name;
+            document.getElementById("pageTitle").innerText =
+                "Product unavailable";
+            document.getElementById("productName").innerText =
+                "This product could not be found.";
+            document.getElementById("mainImage").style.display = "none";
+            document.querySelector(".product-price").innerText =
+                "Price unavailable";
+            document.getElementById("whatsappButton").style.display = "none";
+        }
 
+        return;
+    }
 
-document.getElementById("pageTitle").innerText =
-    currentProduct.name;
+    const product = hairProducts[productNumber] || hairProducts[1];
 
-
-document.getElementById("productName").innerText =
-    currentProduct.name;
-
-
-document.getElementById("productDescription").innerText =
-    currentProduct.description;
-
-
-document.getElementById("mainImage").src =
-    currentProduct.image;
-
-
-document.getElementById("mainImage").alt =
-    currentProduct.name;
-
-
-
-/* WHATSAPP */
-
-const whatsappNumber =
-    "917874216100";
-
-
-const whatsappMessage =
-    "Hello Masumi Creation! I am interested in " +
-    currentProduct.name +
-    ". Please share the price and availability.";
-
-
-document.getElementById("whatsappButton").href =
-    "https://wa.me/" +
-    whatsappNumber +
-    "?text=" +
-    encodeURIComponent(whatsappMessage);
-
-
-
-/* CART */
+    displayHairProduct({
+        name: product.name,
+        description: product.description,
+        image: product.image
+    }, false);
+}
 
 function addCurrentProductToCart() {
-
-    addToCart(
-        currentProduct.name,
-        quantity
-    );
-
+    if (currentProduct) {
+        addToCart(currentProduct.name, quantity);
+    }
 }
-
-
-/* WISHLIST */
 
 function addCurrentProductToWishlist() {
-
-    addToWishlist(
-        currentProduct.name
-    );
-
+    if (currentProduct) {
+        addToWishlist(currentProduct.name);
+    }
 }
 
-
-/* IMAGE VIEWER */
+function changeQty(amount) {
+    quantity = Math.max(1, quantity + amount);
+    document.getElementById("qty").innerText = quantity;
+}
 
 function openImage(image) {
+    const modal = document.getElementById("imageModal");
+    const zoomedImage = document.getElementById("zoomedImage");
 
-    const modal =
-        document.getElementById("imageModal");
-
-    const zoomedImage =
-        document.getElementById("zoomedImage");
-
-    if (modal && zoomedImage) {
-
+    if (modal && zoomedImage && image) {
         zoomedImage.src = image;
-
         modal.style.display = "flex";
-
     }
-
 }
-
 
 function closeImage() {
-
-    const modal =
-        document.getElementById("imageModal");
-
-    if (modal) {
-
-        modal.style.display = "none";
-
-    }
-
+    document.getElementById("imageModal").style.display = "none";
 }
 
+loadHairProductDetails();
 </script>
 
 
-
 <script src="script.js"></script>
+
 
 
 </body>

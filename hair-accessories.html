@@ -230,7 +230,7 @@ class="hair-collection">
 </h2>
 
 
-<div class="hair-products">
+<div class="hair-products" id="categoryProductsContainer">
 
 
 <!-- ================= HAIR PRODUCT 1 ================= -->
@@ -400,7 +400,25 @@ Close
 
 
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+const SUPABASE_URL = "https://nipzghcilyhowudosabm.supabase.co";
+const SUPABASE_PUBLISHABLE_KEY = "sb_publishable_HIGQwrRY5Ssz-DMhCbC3EQ_waher5Hn";
+
+const supabaseClient = supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+);
+</script>
+
 <script src="script.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    loadCategoryProducts("Hair Accessories", "hair-product.html");
+});
+</script>
 
 </body>
 
