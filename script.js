@@ -529,7 +529,7 @@ async function loadStorefrontProducts() {
 
             const price = document.createElement("p");
             price.className = "price";
-            price.textContent = "💎 Price: RM " +
+            price.textContent = "💎 Price: INR " +
                 Number(product.price).toFixed(2);
 
             info.appendChild(price);
@@ -641,7 +641,7 @@ async function loadCategoryProducts(categoryName, detailPage = "designer-necklac
 
             const price = document.createElement("p");
             price.className = "price";
-            price.textContent = "💎 Price: RM " +
+            price.textContent = "💎 Price: INR " +
                 Number(product.price).toFixed(2);
             card.appendChild(price);
 
@@ -713,7 +713,7 @@ async function loadCategoryProducts(categoryName, detailPage = "designer-necklac
 
             const price = document.createElement("p");
             price.className = "price";
-            price.textContent = "💎 Price: RM " +
+            price.textContent = "💎 Price: INR " +
                 Number(product.price).toFixed(2);
             card.appendChild(price);
 
